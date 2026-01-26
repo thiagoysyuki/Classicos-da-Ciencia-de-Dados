@@ -1,19 +1,19 @@
 project:
-  type: book
+  type: website
   output-dir: ../book
 
 execute: 
   freeze: true
 
-book:
+website:
+  announcement: 
+      content: "**Atenção** - Se você achou este conteúdo útil, considere apoiar o projeto me seguindo no Youtube, Instagram ou LinkedIn! 🚀" 
+      position: below-navbar 
   title: "Clássicos da Ciência de Dados"
-  reader-mode: true
-  subtitle: "Projetos práticos para aprender ciência de dados"
-  author: "Thiago Yuki"
-  date: "01-24-2026"
-  cover-image: "static/book-cover.png"
+  description: "Uma jornada prática através dos principais casos de uso em ciência de dados"
+  site-url: https://classicos-ds.netlify.app/
+  bread-crumbs: true
   page-navigation: true
-  division: "ResolvedorTech Labs" 
   navbar:
     background: "#f5e003"
     pinned: true   
@@ -21,7 +21,6 @@ book:
     logo-link: https://www.resolvedortech.com.br/
     collapse: true
     search: true
-    search-position: right
     right: 
       - icon: github
         href: https://github.com/thiagoysyuki
@@ -36,7 +35,6 @@ book:
         href: https://www.instagram.com/resolvedortech/
         aria-label: "Instagram"
   sidebar: 
-    id: "sidebar"
     title: "Clássicos da Ciência de Dados"
     logo: "static/logo.png"
     logo-alt: "Logo da Clássicos da Ciência de Dados"
@@ -44,7 +42,27 @@ book:
     logo-height: 80
     logo-position: left
     logo-link: https://www.resolvedortech.com.br/
-    style: docked 
+    style: docked
+    search: true 
+    contents:
+      - text: Bem Vindo(a)
+        href: index.qmd
+      - section: Descritivo/descritivo.qmd
+        contents:
+        - Descritivo/gdp.ipynb
+      
+      - section: Preditivo/predicao.qmd 
+        contents:
+          - Preditivo/iris.ipynb
+          - Preditivo/titanic.ipynb 
+          - Preditivo/pinguins.ipynb
+          - Preditivo/housing.ipynb
+          - Preditivo/gasoline.qmd
+
+      - section: Prescritivo/prescritivo.qmd
+        contents:
+          - Prescritivo/dieta.ipynb
+          - Prescritivo/caixeiro.ipynb
 
   page-footer:
     left: "Direitos Autorais de Thiago Yuki, 2025"
@@ -62,35 +80,22 @@ book:
       - icon: linkedin
         href: https://linkedin.com/in/thiagoyuki
         aria-label: "LinkedIn"
-  
-  chapters:
-    - index.qmd
-  
-    - part: Descritivo/descritivo.qmd
-      chapters:
-        - Descritivo/gdp.qmd
-    
-    - part: Preditivo/predicao.qmd 
-      chapters:
-        - Preditivo/Iris Dataset/iris.ipynb
-    
-#    - part: Diagnóstico/diagnostico.qmd
-#      chapters:
-#        - Diagnóstico/analisando-vendas.qmd
-#
-#    - part: Prescritivo/prescritivo.qmd
-#      chapters:
-#        - Prescritivo/otimizacao-portfolio.qmd
-    
-#bibliography: references.bib
+
+
+
+bibliography: static/references.bib
+csl: static/abnt.csl
 
 format:
   html:
     code-fold: true
-    code-tools: true    
+    code-summary: "Mostrar/Ocultar Código"    
     theme:
-      - cosmo
+      - spacelab
+    highlight-style: dracula
     toc: true
     toc-location: right
-    toc-depth: 3
+    toc-depth: 5
+    
+jupyter: python3
 lang: pt-BR

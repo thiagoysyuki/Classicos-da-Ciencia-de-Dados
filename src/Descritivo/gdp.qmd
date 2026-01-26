@@ -1,3 +1,0 @@
-# GDP 
-
-Neste projeto, vamos analisar o desempenho de algumas ações brasileiras utilizando a biblioteca `yfinance` para obter os dados históricos do mercado financeiro. O objetivo é calcular métricas como retorno médio, volatilidade e o índice de Sharpe para cada ação selecionada.

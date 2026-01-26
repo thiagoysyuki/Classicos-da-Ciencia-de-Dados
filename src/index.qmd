@@ -1,8 +1,18 @@
-# Bem Vindo(a) {.unnumbered}
+---
+author: Thiago Yuki
+title: Clássicos da Ciência de Dados
+subtitle: Uma jornada prática através dos principais casos de uso em ciência de dados
+date: 2025-01-01
+publisher: ResolvedorTech
+
+---
 
 
+# Bem Vindo(a)
 
-Ciência de dados continua sendo uma das áreas mais quentes no mercado de trabalho atualmente. Com a crescente quantidade de dados gerados diariamente, a capacidade de analisar, interpretar e extrair insights valiosos desses dados tornou-se essencial para empresas e organizações em diversos setores.
+Ciência de dados continua sendo uma das áreas mais quentes no mercado de trabalho atualmente. Com a crescente quantidade de dados gerados diariamente, a capacidade de analisar, interpretar e extrair insights valiosos desses dados tornou-se essencial para empresas e organizações em diversos setores. 
+
+![](static/book-cover.png){width=250px style="float: right; margin-left: 20px; margin-bottom: 10px;"}
 
 Muitos profissionais estão migrando para a área de ciência de dados em busca de melhores oportunidades de carreira, salários mais altos e a chance de trabalhar em projetos inovadores. No entanto, essa transição pode ser desafiadora, especialmente para aqueles que não possuem um background técnico sólido.
 
@@ -15,7 +25,7 @@ Dediquei 13 anos da minha vida profissional a pesquisa e desenvolvimento na ind�
 
 Este livro é fruto da minha experiência pessoal e aprendizado ao longo dessa jornada. Nele, compartilho conhecimentos, dicas e recursos que me ajudaram a superar os desafios e a me tornar um cientista de dados competente. Espero que este material possa ser útil para outros profissionais que, assim como eu, estão buscando ingressar na área de ciência de dados e alcançar seus objetivos profissionais.
 
-## Conteúdo do Livro {.unnumbered}
+## Conteúdo do Livro 
 
 Este livro esta dividido em 4 seções principais:
 
@@ -28,7 +38,7 @@ Dentro das seções estão organizados os casos de uso, que são exemplos práti
 
 Espero que este livro seja um recurso valioso para sua jornada na ciência de dados. Boa leitura e sucesso em sua carreira!
 
-## Sobre o Autor {.unnumbered}
+## Sobre o Autor
 
 ![](static/pensando2-768x659.png){width=350px style="float: right; margin-left: 20px; margin-bottom: 10px;"}
 

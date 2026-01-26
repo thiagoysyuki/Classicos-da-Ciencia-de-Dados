@@ -1,0 +1,3 @@
+# Prescritivo
+
+A análise prescritiva foca em fornecer recomendações específicas para ações futuras com base em dados e análises. Ela vai além da análise descritiva (que descreve o que aconteceu) e da análise preditiva (que prevê o que pode acontecer), oferecendo sugestões práticas para otimizar resultados.

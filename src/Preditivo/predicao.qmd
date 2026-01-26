@@ -1,3 +1,3 @@
-# Predição
+# Preditivo
 
 Neste capítulo, vamos explorar técnicas de predição utilizando modelos clássicos de machine learning. Abordaremos desde a preparação dos dados até a avaliação dos modelos preditivos, aplicando algoritmos como Regressão Linear, Árvores de Decisão e K-Nearest Neighbors.
