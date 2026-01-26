@@ -1,0 +1,47 @@
+# Descritivo
+
+Projetos descritivos de analytics têm como objetivo sintetizar e comunicar o que aconteceu e como está o desempenho de um negócio, produto ou processo, por meio de métricas, segmentações e visualizações. Diferentemente de análises diagnósticas, preditivas ou prescritivas, o foco aqui é compreender o estado atual e histórico dos dados para suporte à decisão cotidiana.
+
+## Objetivos comuns
+- Resumir volumes de dados em indicadores claros (KPIs).
+- Monitorar evolução temporal e sazonalidade.
+- Identificar padrões, outliers e mudanças de comportamento.
+- Comparar segmentos (cliente, região, canal, produto).
+- Comunicar insights de forma simples e acionável.
+
+## Escopo e perguntas orientadoras
+- Período de análise (janela histórica, frequência de atualização).
+- População e filtros (quem, onde, o quê).
+- Dimensões relevantes (tempo, geografia, produto, canal).
+- Perguntas: o que está acontecendo? onde está melhor/pior? como evoluiu?
+
+## Dados e qualidade
+- Fontes, granularidade, chaves de junção e cobertura temporal.
+- Regras de limpeza e padronização (missing, duplicados, outliers).
+- Definições de negócio e dicionário de dados para consistência.
+
+## Métricas e dimensões
+- KPIs principais (ex.: receita, conversão, churn, NPS).
+- Métricas derivadas e taxas normalizadas.
+- Segmentações que revelam heterogeneidade do comportamento.
+
+## Técnicas e visualizações
+- Agregações, distribuições, percentis e histogramas.
+- Séries temporais e comparações YoY/MoM.
+- Tabelas dinâmicas e heatmaps por dimensão.
+- Cohorts e funnels para jornadas.
+
+## Entregáveis
+- Relatório descritivo com narrativas curtas.
+- Dashboard com filtros e documentação das métricas.
+- Dicionário de dados e checklist de qualidade.
+
+## Boas práticas
+- Clareza na definição de métricas e unidades.
+- Contexto de negócio e limitações explícitas (não-causal).
+- Consistência visual e acessibilidade.
+- Automação e versionamento para repetibilidade.
+
+## Limitações
+Descritivo não explica causalidade nem prevê o futuro; é a base para análises diagnósticas e preditivas. Interpretações devem considerar contexto e possíveis vieses.
+

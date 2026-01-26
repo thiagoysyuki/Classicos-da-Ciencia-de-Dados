@@ -1,0 +1,96 @@
+project:
+  type: book
+  output-dir: _book
+
+execute: 
+  freeze: true
+
+book:
+  title: "Clássicos da Ciência de Dados"
+  reader-mode: true
+  subtitle: "Projetos práticos para aprender ciência de dados"
+  author: "Thiago Yuki"
+  date: "01-24-2026"
+  cover-image: "static/book-cover.png"
+  page-navigation: true
+  division: "ResolvedorTech Labs" 
+  navbar:
+    background: "#f5e003"
+    pinned: true   
+    title: "Clássicos da Ciência de Dados"
+    logo-link: https://www.resolvedortech.com.br/
+    collapse: true
+    search: true
+    search-position: right
+    right: 
+      - icon: github
+        href: https://github.com/thiagoysyuki
+        aria-label: "GitHub"
+      - icon: linkedin
+        href: https://linkedin.com/in/thiagoyuki
+        aria-label: "LinkedIn"
+      - icon: youtube
+        href: https://www.youtube.com/@resolvedortech
+        aria-label: "YouTube"
+      - icon: instagram
+        href: https://www.instagram.com/resolvedortech/
+        aria-label: "Instagram"
+  sidebar: 
+    id: "sidebar"
+    title: "Clássicos da Ciência de Dados"
+    logo: "static/logo.png"
+    logo-alt: "Logo da Clássicos da Ciência de Dados"
+    logo-width: 80
+    logo-height: 80
+    logo-position: left
+    logo-link: https://www.resolvedortech.com.br/
+    style: docked 
+
+  page-footer:
+    left: "Direitos Autorais de Thiago Yuki, 2025"
+    center: "Clássicos da Ciência de Dados" 
+    right: 
+      - icon: github
+        href: https://github.com/thiagoysyuki
+        aria-label: "GitHub"
+      - icon: youtube
+        href: https://www.youtube.com/@resolvedortech
+        aria-label: "YouTube"
+      - icon: instagram
+        href: https://www.instagram.com/resolvedortech/
+        aria-label: "Instagram"
+      - icon: linkedin
+        href: https://linkedin.com/in/thiagoyuki
+        aria-label: "LinkedIn"
+  
+  chapters:
+    - index.qmd
+  
+    - part: Descritivo/descritivo.qmd
+      chapters:
+        - Descritivo/gdp.qmd
+    
+    - part: Preditivo/predicao.qmd 
+      chapters:
+        - Preditivo/Iris Dataset/iris.ipynb
+    
+#    - part: Diagnóstico/diagnostico.qmd
+#      chapters:
+#        - Diagnóstico/analisando-vendas.qmd
+#
+#    - part: Prescritivo/prescritivo.qmd
+#      chapters:
+#        - Prescritivo/otimizacao-portfolio.qmd
+    
+#bibliography: references.bib
+
+format:
+  html:
+    code-fold: true
+    code-tools: true    
+    theme:
+      - cosmo
+    toc: true
+    toc-location: right
+    toc-depth: 3
+lang: pt-BR
