@@ -1,1 +1,0 @@
-Sitemap: https://classicos-ds.netlify.app/sitemap.xml

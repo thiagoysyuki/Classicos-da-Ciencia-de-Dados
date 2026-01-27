@@ -7,7 +7,6 @@ publisher: ResolvedorTech
 
 ---
 
-
 # Bem Vindo(a)
 
 Ciência de dados continua sendo uma das áreas mais quentes no mercado de trabalho atualmente. Com a crescente quantidade de dados gerados diariamente, a capacidade de analisar, interpretar e extrair insights valiosos desses dados tornou-se essencial para empresas e organizações em diversos setores. 

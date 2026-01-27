@@ -20,15 +20,52 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../Preditivo/wine_quality.html" rel="next">
+<link href="../Preditivo/gasoline.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -66,11 +103,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Procurar"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -113,6 +153,19 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Preditivo/predicao.html">Preditivo</a></li><li class="breadcrumb-item"><a href="../Preditivo/iris.html">Classificação</a></li><li class="breadcrumb-item"><a href="../Preditivo/cancer.html">Breast Cancer</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Procurar" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
   <div id="quarto-announcement" data-announcement-id="d1e3f44fbf283aeb197aebe092b58984" class="alert alert-primary hidden"><div class="quarto-announcement-content">
 <p><strong>Atenção</strong> - Se você achou este conteúdo útil, considere apoiar o projeto me seguindo no Youtube, Instagram ou LinkedIn! 🚀</p>
 </div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
@@ -120,6 +173,150 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../static/logo.png" alt="Logo da Clássicos da Ciência de Dados" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Procurar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bem Vindo(a)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Descritivo/descritivo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descritivo</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Descritivo/gdp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GDP</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Preditivo/predicao.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preditivo</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Classificação</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Preditivo/iris.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Iris</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Preditivo/titanic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Titanic</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Preditivo/pinguins.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Penguins</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Preditivo/housing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">House Prices</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Preditivo/gasoline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gasoline</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Preditivo/cancer.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Breast Cancer</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Regressão</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Preditivo/wine_quality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Wine Quality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Preditivo/airpassengers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Air Passengers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../Prescritivo/prescritivo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prescritivo</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Prescritivo/dieta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dieta</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../Prescritivo/caixeiro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Caixeiro Viajante</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
@@ -127,7 +324,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../Preditivo/predicao.html">Preditivo</a></li><li class="breadcrumb-item"><a href="../Preditivo/iris.html">Classificação</a></li><li class="breadcrumb-item"><a href="../Preditivo/cancer.html">Breast Cancer</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Breast Cancer</h1>
 </div>
@@ -146,6 +343,195 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div id="1afd6b4a" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Mostrar/Ocultar Código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> kagglehub</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="b04305a6" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Mostrar/Ocultar Código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download latest version</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> kagglehub.dataset_download(<span class="st">"yasserh/breast-cancer-dataset"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cancer_df <span class="op">=</span> pd.read_csv(<span class="ss">f"</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>os<span class="sc">.</span>listdir(path)[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cancer_df.head()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Downloading to C:\Users\TY\.cache\kagglehub\datasets\yasserh\breast-cancer-dataset\1.archive...</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 48.6k/48.6k [00:00&lt;00:00, 1.04MB/s]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Extracting files...</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">diagnosis</th>
+<th data-quarto-table-cell-role="th">radius_mean</th>
+<th data-quarto-table-cell-role="th">texture_mean</th>
+<th data-quarto-table-cell-role="th">perimeter_mean</th>
+<th data-quarto-table-cell-role="th">area_mean</th>
+<th data-quarto-table-cell-role="th">smoothness_mean</th>
+<th data-quarto-table-cell-role="th">compactness_mean</th>
+<th data-quarto-table-cell-role="th">concavity_mean</th>
+<th data-quarto-table-cell-role="th">concave points_mean</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">radius_worst</th>
+<th data-quarto-table-cell-role="th">texture_worst</th>
+<th data-quarto-table-cell-role="th">perimeter_worst</th>
+<th data-quarto-table-cell-role="th">area_worst</th>
+<th data-quarto-table-cell-role="th">smoothness_worst</th>
+<th data-quarto-table-cell-role="th">compactness_worst</th>
+<th data-quarto-table-cell-role="th">concavity_worst</th>
+<th data-quarto-table-cell-role="th">concave points_worst</th>
+<th data-quarto-table-cell-role="th">symmetry_worst</th>
+<th data-quarto-table-cell-role="th">fractal_dimension_worst</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>842302</td>
+<td>M</td>
+<td>17.99</td>
+<td>10.38</td>
+<td>122.80</td>
+<td>1001.0</td>
+<td>0.11840</td>
+<td>0.27760</td>
+<td>0.3001</td>
+<td>0.14710</td>
+<td>...</td>
+<td>25.38</td>
+<td>17.33</td>
+<td>184.60</td>
+<td>2019.0</td>
+<td>0.1622</td>
+<td>0.6656</td>
+<td>0.7119</td>
+<td>0.2654</td>
+<td>0.4601</td>
+<td>0.11890</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>842517</td>
+<td>M</td>
+<td>20.57</td>
+<td>17.77</td>
+<td>132.90</td>
+<td>1326.0</td>
+<td>0.08474</td>
+<td>0.07864</td>
+<td>0.0869</td>
+<td>0.07017</td>
+<td>...</td>
+<td>24.99</td>
+<td>23.41</td>
+<td>158.80</td>
+<td>1956.0</td>
+<td>0.1238</td>
+<td>0.1866</td>
+<td>0.2416</td>
+<td>0.1860</td>
+<td>0.2750</td>
+<td>0.08902</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>84300903</td>
+<td>M</td>
+<td>19.69</td>
+<td>21.25</td>
+<td>130.00</td>
+<td>1203.0</td>
+<td>0.10960</td>
+<td>0.15990</td>
+<td>0.1974</td>
+<td>0.12790</td>
+<td>...</td>
+<td>23.57</td>
+<td>25.53</td>
+<td>152.50</td>
+<td>1709.0</td>
+<td>0.1444</td>
+<td>0.4245</td>
+<td>0.4504</td>
+<td>0.2430</td>
+<td>0.3613</td>
+<td>0.08758</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>84348301</td>
+<td>M</td>
+<td>11.42</td>
+<td>20.38</td>
+<td>77.58</td>
+<td>386.1</td>
+<td>0.14250</td>
+<td>0.28390</td>
+<td>0.2414</td>
+<td>0.10520</td>
+<td>...</td>
+<td>14.91</td>
+<td>26.50</td>
+<td>98.87</td>
+<td>567.7</td>
+<td>0.2098</td>
+<td>0.8663</td>
+<td>0.6869</td>
+<td>0.2575</td>
+<td>0.6638</td>
+<td>0.17300</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>84358402</td>
+<td>M</td>
+<td>20.29</td>
+<td>14.34</td>
+<td>135.10</td>
+<td>1297.0</td>
+<td>0.10030</td>
+<td>0.13280</td>
+<td>0.1980</td>
+<td>0.10430</td>
+<td>...</td>
+<td>22.54</td>
+<td>16.67</td>
+<td>152.20</td>
+<td>1575.0</td>
+<td>0.1374</td>
+<td>0.2050</td>
+<td>0.4000</td>
+<td>0.1625</td>
+<td>0.2364</td>
+<td>0.07678</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 32 columns</p>
+</div>
+</div>
+</div>
 
 
 
@@ -549,6 +935,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../Preditivo/gasoline.html" class="pagination-link" aria-label="Gasoline">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Gasoline</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../Preditivo/wine_quality.html" class="pagination-link" aria-label="Wine Quality">
+        <span class="nav-page-text">Wine Quality</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

@@ -1,0 +1,23 @@
+[
+  {
+    "listing": "/listing.html",
+    "items": [
+      "/about.html",
+      "/Preditivo/Regressão/airpassengers.html",
+      "/Preditivo/Classificação/cancer.html",
+      "/Prescritivo/PL/caixeiro.html",
+      "/index.html",
+      "/Descritivo/descritivo.html",
+      "/Prescritivo/PL/dieta.html",
+      "/Descritivo/Gráficos/gdp.html",
+      "/Preditivo/Regressão/gasoline.html",
+      "/Preditivo/Regressão/housing.html",
+      "/Preditivo/Classificação/iris.html",
+      "/Preditivo/Classificação/pinguins.html",
+      "/Preditivo/predicao.html",
+      "/Prescritivo/prescritivo.html",
+      "/Preditivo/Classificação/titanic.html",
+      "/Preditivo/Classificação/wine_quality.html"
+    ]
+  }
+]

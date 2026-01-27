@@ -49,20 +49,30 @@ website:
         href: index.qmd
       - section: Descritivo/descritivo.qmd
         contents:
-        - Descritivo/gdp.ipynb
+        - section: "Gráficos e Estatísticas"
+          contents:          
+          - Descritivo/Gráficos/gdp.ipynb
       
       - section: Preditivo/predicao.qmd 
         contents:
-          - Preditivo/iris.ipynb
-          - Preditivo/titanic.ipynb 
-          - Preditivo/pinguins.ipynb
-          - Preditivo/housing.ipynb
-          - Preditivo/gasoline.qmd
-
+          - section: "Classificação"
+            contents:
+            - Preditivo/Classificação/iris.ipynb
+            - Preditivo/Classificação/titanic.ipynb 
+            - Preditivo/Classificação/pinguins.ipynb
+            - Preditivo/Classificação/cancer.ipynb
+            - Preditivo/Classificação/wine_quality.ipynb
+          - section: "Regressão"
+            contents:
+            - Preditivo/Regressão/housing.ipynb
+            - Preditivo/Regressão/gasoline.qmd
+            - Preditivo/Regressão/airpassengers.ipynb
       - section: Prescritivo/prescritivo.qmd
         contents:
-          - Prescritivo/dieta.ipynb
-          - Prescritivo/caixeiro.ipynb
+          - section: "Programação Linear"
+            contents:
+            - Prescritivo/PL/dieta.ipynb
+            - Prescritivo/PL/caixeiro.ipynb
 
   page-footer:
     left: "Direitos Autorais de Thiago Yuki, 2025"
