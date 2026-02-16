@@ -1,0 +1,25 @@
+
+
+# Gasoline
+
+Vamos predizer a octanagem da gasolina a partir de espectros de absorção no infravermelho próximo.
+
+
+```{r}
+library(pls)
+
+```
+
+
+
+
+```{r}
+
+library(pls)
+data("gasoline")
+
+
+head(gasoline)
+
+
+```

@@ -1,0 +1,4 @@
+# Diagnóstico
+
+Neste capítulo, vamos explorar técnicas de análise diagnóstica, focando em causalidade e inferência causal. Abordaremos métodos para identificar relações causais em dados observacionais, utilizando ferramentas como gráficos causais, modelos de regressão e técnicas de controle de confusão. O objetivo é entender como as variáveis estão relacionadas e como podemos inferir causalidade a partir dos dados disponíveis.
+

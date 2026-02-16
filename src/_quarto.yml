@@ -47,32 +47,59 @@ website:
     contents:
       - text: Bem Vindo(a)
         href: index.qmd
-      - section: Descritivo/descritivo.qmd
+      - section: 2_Descritivo/descritivo.qmd
         contents:
-        - section: "Gráficos e Estatísticas"
-          contents:          
-          - Descritivo/Gráficos/gdp.ipynb
+        - section: "Gráficos"
+          contents:
+            - section: "ggplot2"
+              contents:
+              - 2_Descritivo/Gráficos/ggplot/gdp.ipynb
       
-      - section: Preditivo/predicao.qmd 
+      - section: 3_Preditivo/predicao.qmd 
         contents:
           - section: "Classificação"
             contents:
-            - Preditivo/Classificação/iris.ipynb
-            - Preditivo/Classificação/titanic.ipynb 
-            - Preditivo/Classificação/pinguins.ipynb
-            - Preditivo/Classificação/cancer.ipynb
-            - Preditivo/Classificação/wine_quality.ipynb
+            - section: "Regressão Logística"
+              contents:
+              - 3_Preditivo/Classificação/Regressão Logística/cancer.ipynb
+            - section: Random Forest
+              contents:
+              - 3_Preditivo/Classificação/Random_Forest/titanic.ipynb
+            - section: "KNN"
+              contents:
+              - 3_Preditivo/Classificação/KNN/iris.ipynb
+            - section: "SVM"
+              contents:
+              - 3_Preditivo/Classificação/SVM/pinguins.ipynb
           - section: "Regressão"
             contents:
-            - Preditivo/Regressão/housing.ipynb
-            - Preditivo/Regressão/gasoline.qmd
-            - Preditivo/Regressão/airpassengers.ipynb
-      - section: Prescritivo/prescritivo.qmd
+            - section: "Regressão Linear"
+              contents:
+              - 3_Preditivo/Regressão/Regressão Linear/housing.ipynb
+            - section: "PLS"
+              contents:
+              - 3_Preditivo/Regressão/PLS/gasoline.qmd
+          - section: "Série Temporal"
+            contents:
+            - section: "ARIMA"
+              contents:
+              - 3_Preditivo/Séries Temporais/ARIMA/airpassengers.ipynb
+              
+      - section: "4_Diagnostico/diagnostico.qmd"
+        contents:
+          - section: "Controle Sintético"
+            contents:
+            - 4_Diagnostico/Controle_Sintetico/smoking.ipynb
+          - section: "Teste A/B"
+            contents:
+            - 4_Diagnostico/Teste_AB/teste_ab.ipynb
+
+      - section: 5_Prescritivo/prescritivo.qmd
         contents:
           - section: "Programação Linear"
             contents:
-            - Prescritivo/PL/dieta.ipynb
-            - Prescritivo/PL/caixeiro.ipynb
+            - 5_Prescritivo/PL/dieta.ipynb
+            - 5_Prescritivo/PL/caixeiro.ipynb
 
   page-footer:
     left: "Direitos Autorais de Thiago Yuki, 2025"

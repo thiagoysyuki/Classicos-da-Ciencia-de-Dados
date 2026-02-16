@@ -335,13 +335,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../Diagnostico/diagnostico.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diagnóstico</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../Diagnostico/smoking.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Smoking</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#conhecendo-o-dataset-house-prices" id="toc-conhecendo-o-dataset-house-prices" class="nav-link active" data-scroll-target="#conhecendo-o-dataset-house-prices">Conhecendo o Dataset House Prices</a></li>
+  <li><a href="#carregando-o-dataset" id="toc-carregando-o-dataset" class="nav-link" data-scroll-target="#carregando-o-dataset">Carregando o Dataset</a></li>
+  <li><a href="#conhecendo-as-colunas-do-dataset" id="toc-conhecendo-as-colunas-do-dataset" class="nav-link" data-scroll-target="#conhecendo-as-colunas-do-dataset">Conhecendo as colunas do Dataset</a></li>
+  <li><a href="#objetivo-do-estudo" id="toc-objetivo-do-estudo" class="nav-link" data-scroll-target="#objetivo-do-estudo">Objetivo do estudo</a></li>
+  <li><a href="#hands-on" id="toc-hands-on" class="nav-link" data-scroll-target="#hands-on">Hands-On</a>
+  <ul>
+  <li><a href="#analise-inicial-dos-dados" id="toc-analise-inicial-dos-dados" class="nav-link" data-scroll-target="#analise-inicial-dos-dados">Analise Inicial dos Dados</a></li>
+  <li><a href="#tranformando-variáveis-categóricas-em-numéricas" id="toc-tranformando-variáveis-categóricas-em-numéricas" class="nav-link" data-scroll-target="#tranformando-variáveis-categóricas-em-numéricas">Tranformando Variáveis Categóricas em Numéricas</a></li>
+  <li><a href="#regressão-linear" id="toc-regressão-linear" class="nav-link" data-scroll-target="#regressão-linear">Regressão Linear</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -365,28 +397,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="0aaae529" class="cell" data-execution_count="1">
+<div id="0aaae529" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> kagglehub</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler, OneHotEncoder</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="70a67b17" class="cell">
+<section id="conhecendo-o-dataset-house-prices" class="level2">
+<h2 class="anchored" data-anchor-id="conhecendo-o-dataset-house-prices">Conhecendo o Dataset House Prices</h2>
+<p>O conjunto de dados House Prices é um conjunto de dados popular usado para tarefas de regressão em aprendizado de máquina. Ele contém informações sobre várias características de casas, como número de quartos, área, localização, entre outras, e o objetivo é prever o preço de venda dessas casas com base nessas características.</p>
+</section>
+<section id="carregando-o-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="carregando-o-dataset">Carregando o Dataset</h2>
+<div id="70a67b17" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> kagglehub.dataset_download(<span class="st">"yasserh/housing-prices-dataset"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>housing_df <span class="op">=</span> pd.read_csv(os.path.join(path, os.listdir(path)[<span class="dv">0</span>]), header<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>housing_df <span class="op">=</span> pd.read_csv(os.path.join(path, os.listdir(path)[<span class="dv">0</span>]), header<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>housing_df.head()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-</div>
-<div id="d3d2addb" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>housing_df.head()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -496,8 +536,162 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div id="3f4da1c2" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Mostrar/Ocultar Código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>housing_df.info()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.DataFrame'&gt;
+RangeIndex: 545 entries, 0 to 544
+Data columns (total 13 columns):
+ #   Column            Non-Null Count  Dtype
+---  ------            --------------  -----
+ 0   price             545 non-null    int64
+ 1   area              545 non-null    int64
+ 2   bedrooms          545 non-null    int64
+ 3   bathrooms         545 non-null    int64
+ 4   stories           545 non-null    int64
+ 5   mainroad          545 non-null    str  
+ 6   guestroom         545 non-null    str  
+ 7   basement          545 non-null    str  
+ 8   hotwaterheating   545 non-null    str  
+ 9   airconditioning   545 non-null    str  
+ 10  parking           545 non-null    int64
+ 11  prefarea          545 non-null    str  
+ 12  furnishingstatus  545 non-null    str  
+dtypes: int64(6), str(7)
+memory usage: 55.5 KB</code></pre>
+</div>
+</div>
+</section>
+<section id="conhecendo-as-colunas-do-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="conhecendo-as-colunas-do-dataset">Conhecendo as colunas do Dataset</h2>
+<p>Temos as seguintes colunas no dataset:</p>
+<ul>
+<li><strong>price</strong> - Preço de venda da casa.</li>
+<li><strong>bedrooms</strong> - Número de quartos.</li>
+<li><strong>bathrooms</strong> - Número de banheiros.</li>
+<li><strong>stories</strong> - Número de andares.</li>
+<li><strong>mainroad</strong> - Se a casa está localizada em uma estrada principal (sim/não).</li>
+<li><strong>guestroom</strong> - Se a casa possui quarto de hóspedes (sim/não).</li>
+<li><strong>basement</strong> - Se a casa possui porão (sim/não).</li>
+<li><strong>hotwaterheating</strong> - Se a casa possui aquecimento de água (sim/não).</li>
+<li><strong>airconditioning</strong> - Se a casa possui ar condicionado (sim/não).</li>
+<li><strong>parking</strong> - Número de vagas de estacionamento.</li>
+<li><strong>prefarea</strong> - Se a casa está localizada em uma área preferencial (sim/não).</li>
+<li><strong>furnishingstatus</strong> - Estado de mobília da casa (mobilada, semi-mobilada, não mobilada).</li>
+</ul>
+</section>
+<section id="objetivo-do-estudo" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo-do-estudo">Objetivo do estudo</h2>
+<p>O objetivo deste estudo é analisar o conjunto de dados House Prices e desenvolver um modelo de regressão que possa prever o preço de venda das casas com base em suas características. Isso envolve a exploração dos dados, a seleção de características relevantes, a construção e avaliação do modelo.</p>
+</section>
+<section id="hands-on" class="level1">
+<h1>Hands-On</h1>
+<section id="analise-inicial-dos-dados" class="level2">
+<h2 class="anchored" data-anchor-id="analise-inicial-dos-dados">Analise Inicial dos Dados</h2>
+<div id="1d9f1a23" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Mostrar/Ocultar Código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(housing_df, x_vars<span class="op">=</span>[<span class="st">'bedrooms'</span>, <span class="st">'bathrooms'</span>, <span class="st">'stories'</span>,<span class="st">'parking'</span>], y_vars<span class="op">=</span><span class="st">'price'</span>, height<span class="op">=</span><span class="dv">5</span>, aspect<span class="op">=</span><span class="fl">0.7</span>, kind<span class="op">=</span><span class="st">'reg'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="housing_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="tranformando-variáveis-categóricas-em-numéricas" class="level2">
+<h2 class="anchored" data-anchor-id="tranformando-variáveis-categóricas-em-numéricas">Tranformando Variáveis Categóricas em Numéricas</h2>
+<p>Para trazer mais informações ao modelo, vamos transformar as variáveis categóricas em numéricas utilizando One-Hot Encoding.</p>
+<div id="466b8bf2" class="cell" data-execution_count="49">
+<details class="code-fold">
+<summary>Mostrar/Ocultar Código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>encoding_features <span class="op">=</span> [<span class="st">'mainroad'</span>, <span class="st">'guestroom'</span>, <span class="st">'basement'</span>, <span class="st">'hotwaterheating'</span>, <span class="st">'airconditioning'</span>, <span class="st">'prefarea'</span>, <span class="st">'furnishingstatus'</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>numerical_features <span class="op">=</span> [<span class="st">'bedrooms'</span>, <span class="st">'bathrooms'</span>, <span class="st">'stories'</span>, <span class="st">'parking'</span>, <span class="st">'price'</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>enc <span class="op">=</span> OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">'ignore'</span>, drop<span class="op">=</span><span class="st">'first'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>enc.fit(housing_df[encoding_features])</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>encoded_cols <span class="op">=</span> enc.get_feature_names_out(encoding_features)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>encoded_df <span class="op">=</span> pd.DataFrame(enc.transform(housing_df[encoding_features]).toarray(), columns<span class="op">=</span>encoded_cols)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>housing_encoded_df <span class="op">=</span> pd.concat([housing_df[numerical_features], encoded_df], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>housing_encoded_df.head()</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> housing_encoded_df.drop(<span class="st">'price'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> housing_encoded_df[<span class="st">'price'</span>]</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>lm <span class="op">=</span> LinearRegression()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>lm.fit(X, y)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lm.predict(X)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y, y_pred)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> r2_score(y, y_pred)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Squared Error: </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'R^2 Score: </span><span class="sc">{</span>r2<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean Squared Error: 1322612595210.4343
+R^2 Score: 0.6212585196586397</code></pre>
+</div>
+</div>
+<div id="74809bc5" class="cell" data-execution_count="48">
+<details class="code-fold">
+<summary>Mostrar/Ocultar Código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>enc <span class="op">=</span> OneHotEncoder()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>categorical_features <span class="op">=</span> [<span class="st">'mainroad'</span>, <span class="st">'guestroom'</span>, <span class="st">'basement'</span>, <span class="st">'hotwaterheating'</span>, <span class="st">'airconditioning'</span>, <span class="st">'prefarea'</span>, <span class="st">'furnishingstatus'</span>]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>numerical_features <span class="op">=</span> [<span class="st">'bedrooms'</span>, <span class="st">'bathrooms'</span>, <span class="st">'stories'</span>, <span class="st">'parking'</span>]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'num'</span>, StandardScaler(), numerical_features),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        (<span class="st">'cat'</span>, OneHotEncoder(drop<span class="op">=</span><span class="st">'first'</span>), categorical_features)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> housing_df.drop(<span class="st">'price'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> housing_df[<span class="st">'price'</span>]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline(steps<span class="op">=</span>[(<span class="st">'preprocessor'</span>, preprocessor),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                           (<span class="st">'regressor'</span>, LinearRegression())])</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>pipeline.fit(X_train, y_train)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> pipeline.predict(X_test)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y_test, y_pred)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> r2_score(y_test, y_pred)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Squared Error: </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'R^2 Score: </span><span class="sc">{</span>r2<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean Squared Error: 1995117336050.4673
+R^2 Score: 0.6052844774514041</code></pre>
+</div>
+</div>
+</section>
+<section id="regressão-linear" class="level2">
+<h2 class="anchored" data-anchor-id="regressão-linear">Regressão Linear</h2>
+<div id="c6da7511" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Mostrar/Ocultar Código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lm <span class="op">=</span> LinearRegression()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> housing_df[[<span class="st">'bedrooms'</span>, <span class="st">'bathrooms'</span>, <span class="st">'stories'</span>, <span class="st">'parking'</span>]]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> housing_df[<span class="st">'price'</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>lm.fit(X, y)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> lm.predict(X)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>mse <span class="op">=</span> mean_squared_error(y, y_pred)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>r2 <span class="op">=</span> r2_score(y, y_pred)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Mean Squared Error: </span><span class="sc">{</span>mse<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'R^2 Score: </span><span class="sc">{</span>r2<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean Squared Error: 1971153274402.9375
+R^2 Score: 0.43554332400085216</code></pre>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

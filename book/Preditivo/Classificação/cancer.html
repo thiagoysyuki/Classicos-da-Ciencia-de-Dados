@@ -340,8 +340,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Nesta página</h2>
+   
+  <ul>
+  <li><a href="#conhecendo-o-dataset-breast-cancer" id="toc-conhecendo-o-dataset-breast-cancer" class="nav-link active" data-scroll-target="#conhecendo-o-dataset-breast-cancer">Conhecendo o Dataset Breast Cancer</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -375,6 +381,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<section id="conhecendo-o-dataset-breast-cancer" class="level1">
+<h1>Conhecendo o Dataset Breast Cancer</h1>
+<p>O conjunto de dados Breast Cancer Wisconsin (Diagnostic) é um conjunto de dados amplamente utilizado para tarefas de classificação em aprendizado de máquina. Ele contém informações sobre características de tumores mamários, que são usadas para prever se um tumor é benigno ou maligno.</p>
 <div id="b04305a6" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
@@ -383,18 +392,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cancer_df <span class="op">=</span> pd.read_csv(<span class="ss">f"</span><span class="sc">{</span>path<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>os<span class="sc">.</span>listdir(path)[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cancer_df.head()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>Downloading to C:\Users\TY\.cache\kagglehub\datasets\yasserh\breast-cancer-dataset\1.archive...</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 48.6k/48.6k [00:00&lt;00:00, 1.04MB/s]</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Extracting files...</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code></code></pre>
-</div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
@@ -556,6 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
