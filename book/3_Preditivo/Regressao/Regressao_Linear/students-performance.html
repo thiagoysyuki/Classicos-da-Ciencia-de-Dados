@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.27">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -58,7 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../../">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dec5e0acccc0c3f649fee939a7c493d0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-fc8d3d93f0a84b7619e1f8ff6eb63d42.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-74e6a7ae70623c6dcfc9eb3a50a8cbb8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-955267b41c6ba644f908d92906933cc7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -101,7 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Procurar"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -171,284 +172,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="3cec3d71" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ucimlrepo <span class="im">import</span> fetch_ucirepo </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_tables <span class="im">import</span> GT</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ucimlrepo <span class="im">import</span> fetch_ucirepo </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_tables <span class="im">import</span> GT</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="abd45b8f" class="cell" data-execution_count="8">
+<div id="abd45b8f" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fetch dataset </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>student_performance <span class="op">=</span> fetch_ucirepo(<span class="bu">id</span><span class="op">=</span><span class="dv">320</span>) </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>student_performance</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fetch dataset </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>student_performance <span class="op">=</span> fetch_ucirepo(<span class="bu">id</span><span class="op">=</span><span class="dv">320</span>) </span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>{'data': {'ids': None,
-  'features':     school sex  age address famsize Pstatus  Medu  Fedu      Mjob      Fjob  \
-  0       GP   F   18       U     GT3       A     4     4   at_home   teacher   
-  1       GP   F   17       U     GT3       T     1     1   at_home     other   
-  2       GP   F   15       U     LE3       T     1     1   at_home     other   
-  3       GP   F   15       U     GT3       T     4     2    health  services   
-  4       GP   F   16       U     GT3       T     3     3     other     other   
-  ..     ...  ..  ...     ...     ...     ...   ...   ...       ...       ...   
-  644     MS   F   19       R     GT3       T     2     3  services     other   
-  645     MS   F   18       U     LE3       T     3     1   teacher  services   
-  646     MS   F   18       U     GT3       T     1     1     other     other   
-  647     MS   M   17       U     LE3       T     3     1  services  services   
-  648     MS   M   18       R     LE3       T     3     2  services     other   
-  
-       ... higher internet  romantic  famrel  freetime goout Dalc Walc health  \
-  0    ...    yes       no        no       4         3     4    1    1      3   
-  1    ...    yes      yes        no       5         3     3    1    1      3   
-  2    ...    yes      yes        no       4         3     2    2    3      3   
-  3    ...    yes      yes       yes       3         2     2    1    1      5   
-  4    ...    yes       no        no       4         3     2    1    2      5   
-  ..   ...    ...      ...       ...     ...       ...   ...  ...  ...    ...   
-  644  ...    yes      yes        no       5         4     2    1    2      5   
-  645  ...    yes      yes        no       4         3     4    1    1      1   
-  646  ...    yes       no        no       1         1     1    1    1      5   
-  647  ...    yes      yes        no       2         4     5    3    4      2   
-  648  ...    yes      yes        no       4         4     1    3    4      5   
-  
-      absences  
-  0          4  
-  1          2  
-  2          6  
-  3          0  
-  4          0  
-  ..       ...  
-  644        4  
-  645        4  
-  646        6  
-  647        6  
-  648        4  
-  
-  [649 rows x 30 columns],
-  'targets':      G1  G2  G3
-  0     0  11  11
-  1     9  11  11
-  2    12  13  12
-  3    14  14  14
-  4    11  13  13
-  ..   ..  ..  ..
-  644  10  11  10
-  645  15  15  16
-  646  11  12   9
-  647  10  10  10
-  648  10  11  11
-  
-  [649 rows x 3 columns],
-  'original':     school sex  age address famsize Pstatus  Medu  Fedu      Mjob      Fjob  \
-  0       GP   F   18       U     GT3       A     4     4   at_home   teacher   
-  1       GP   F   17       U     GT3       T     1     1   at_home     other   
-  2       GP   F   15       U     LE3       T     1     1   at_home     other   
-  3       GP   F   15       U     GT3       T     4     2    health  services   
-  4       GP   F   16       U     GT3       T     3     3     other     other   
-  ..     ...  ..  ...     ...     ...     ...   ...   ...       ...       ...   
-  644     MS   F   19       R     GT3       T     2     3  services     other   
-  645     MS   F   18       U     LE3       T     3     1   teacher  services   
-  646     MS   F   18       U     GT3       T     1     1     other     other   
-  647     MS   M   17       U     LE3       T     3     1  services  services   
-  648     MS   M   18       R     LE3       T     3     2  services     other   
-  
-       ... famrel freetime  goout  Dalc  Walc health absences  G1  G2  G3  
-  0    ...      4        3      4     1     1      3        4   0  11  11  
-  1    ...      5        3      3     1     1      3        2   9  11  11  
-  2    ...      4        3      2     2     3      3        6  12  13  12  
-  3    ...      3        2      2     1     1      5        0  14  14  14  
-  4    ...      4        3      2     1     2      5        0  11  13  13  
-  ..   ...    ...      ...    ...   ...   ...    ...      ...  ..  ..  ..  
-  644  ...      5        4      2     1     2      5        4  10  11  10  
-  645  ...      4        3      4     1     1      1        4  15  15  16  
-  646  ...      1        1      1     1     1      5        6  11  12   9  
-  647  ...      2        4      5     3     4      2        6  10  10  10  
-  648  ...      4        4      1     3     4      5        4  10  11  11  
-  
-  [649 rows x 33 columns],
-  'headers': Index(['school', 'sex', 'age', 'address', 'famsize', 'Pstatus', 'Medu', 'Fedu',
-         'Mjob', 'Fjob', 'reason', 'guardian', 'traveltime', 'studytime',
-         'failures', 'schoolsup', 'famsup', 'paid', 'activities', 'nursery',
-         'higher', 'internet', 'romantic', 'famrel', 'freetime', 'goout', 'Dalc',
-         'Walc', 'health', 'absences', 'G1', 'G2', 'G3'],
-        dtype='str')},
- 'metadata': {'uci_id': 320,
-  'name': 'Student Performance',
-  'repository_url': 'https://archive.ics.uci.edu/dataset/320/student+performance',
-  'data_url': 'https://archive.ics.uci.edu/static/public/320/data.csv',
-  'abstract': 'Predict student performance in secondary education (high school). ',
-  'area': 'Social Science',
-  'tasks': ['Classification', 'Regression'],
-  'characteristics': ['Multivariate'],
-  'num_instances': 649,
-  'num_features': 30,
-  'feature_types': ['Integer'],
-  'demographics': ['Sex', 'Age', 'Other', 'Education Level', 'Occupation'],
-  'target_col': ['G1', 'G2', 'G3'],
-  'index_col': None,
-  'has_missing_values': 'no',
-  'missing_values_symbol': None,
-  'year_of_dataset_creation': 2008,
-  'last_updated': 'Fri Jan 05 2024',
-  'dataset_doi': '10.24432/C5TG7T',
-  'creators': ['Paulo Cortez'],
-  'intro_paper': {'ID': 360,
-   'type': 'NATIVE',
-   'title': 'Using data mining to predict secondary school student performance',
-   'authors': 'P. Cortez, A. M. G. Silva',
-   'venue': 'Proceedings of 5th Annual Future Business Technology Conference',
-   'year': 2008,
-   'journal': None,
-   'DOI': None,
-   'URL': 'https://www.semanticscholar.org/paper/61d468d5254730bbecf822c6b60d7d6595d9889c',
-   'sha': None,
-   'corpus': '16621299',
-   'arxiv': None,
-   'mag': None,
-   'acl': None,
-   'pmid': None,
-   'pmcid': None},
-  'additional_info': {'summary': 'This data approach student achievement in secondary education of two Portuguese schools. The data attributes include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires. Two datasets are provided regarding the performance in two distinct subjects: Mathematics (mat) and Portuguese language (por). In [Cortez and Silva, 2008], the two datasets were modeled under binary/five-level classification and regression tasks. Important note: the target attribute G3 has a strong correlation with attributes G2 and G1. This occurs because G3 is the final year grade (issued at the 3rd period), while G1 and G2 correspond to the 1st and 2nd period grades. It is more difficult to predict G3 without G2 and G1, but such prediction is much more useful (see paper source for more details).',
-   'purpose': None,
-   'funded_by': None,
-   'instances_represent': None,
-   'recommended_data_splits': None,
-   'sensitive_data': None,
-   'preprocessing_description': None,
-   'variable_info': "# Attributes for both student-mat.csv (Math course) and student-por.csv (Portuguese language course) datasets:\r\n1 school - student's school (binary: 'GP' - Gabriel Pereira or 'MS' - Mousinho da Silveira)\r\n2 sex - student's sex (binary: 'F' - female or 'M' - male)\r\n3 age - student's age (numeric: from 15 to 22)\r\n4 address - student's home address type (binary: 'U' - urban or 'R' - rural)\r\n5 famsize - family size (binary: 'LE3' - less or equal to 3 or 'GT3' - greater than 3)\r\n6 Pstatus - parent's cohabitation status (binary: 'T' - living together or 'A' - apart)\r\n7 Medu - mother's education (numeric: 0 - none,  1 - primary education (4th grade), 2 â€“ 5th to 9th grade, 3 â€“ secondary education or 4 â€“ higher education)\r\n8 Fedu - father's education (numeric: 0 - none,  1 - primary education (4th grade), 2 â€“ 5th to 9th grade, 3 â€“ secondary education or 4 â€“ higher education)\r\n9 Mjob - mother's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other')\r\n10 Fjob - father's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other')\r\n11 reason - reason to choose this school (nominal: close to 'home', school 'reputation', 'course' preference or 'other')\r\n12 guardian - student's guardian (nominal: 'mother', 'father' or 'other')\r\n13 traveltime - home to school travel time (numeric: 1 - &lt;15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - &gt;1 hour)\r\n14 studytime - weekly study time (numeric: 1 - &lt;2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - &gt;10 hours)\r\n15 failures - number of past class failures (numeric: n if 1&lt;=n&lt;3, else 4)\r\n16 schoolsup - extra educational support (binary: yes or no)\r\n17 famsup - family educational support (binary: yes or no)\r\n18 paid - extra paid classes within the course subject (Math or Portuguese) (binary: yes or no)\r\n19 activities - extra-curricular activities (binary: yes or no)\r\n20 nursery - attended nursery school (binary: yes or no)\r\n21 higher - wants to take higher education (binary: yes or no)\r\n22 internet - Internet access at home (binary: yes or no)\r\n23 romantic - with a romantic relationship (binary: yes or no)\r\n24 famrel - quality of family relationships (numeric: from 1 - very bad to 5 - excellent)\r\n25 freetime - free time after school (numeric: from 1 - very low to 5 - very high)\r\n26 goout - going out with friends (numeric: from 1 - very low to 5 - very high)\r\n27 Dalc - workday alcohol consumption (numeric: from 1 - very low to 5 - very high)\r\n28 Walc - weekend alcohol consumption (numeric: from 1 - very low to 5 - very high)\r\n29 health - current health status (numeric: from 1 - very bad to 5 - very good)\r\n30 absences - number of school absences (numeric: from 0 to 93)\r\n\r\n# these grades are related with the course subject, Math or Portuguese:\r\n31 G1 - first period grade (numeric: from 0 to 20)\r\n31 G2 - second period grade (numeric: from 0 to 20)\r\n32 G3 - final grade (numeric: from 0 to 20, output target)",
-   'citation': None}},
- 'variables':           name     role         type      demographic  \
- 0       school  Feature  Categorical              NaN   
- 1          sex  Feature       Binary              Sex   
- 2          age  Feature      Integer              Age   
- 3      address  Feature  Categorical              NaN   
- 4      famsize  Feature  Categorical            Other   
- 5      Pstatus  Feature  Categorical            Other   
- 6         Medu  Feature      Integer  Education Level   
- 7         Fedu  Feature      Integer  Education Level   
- 8         Mjob  Feature  Categorical       Occupation   
- 9         Fjob  Feature  Categorical       Occupation   
- 10      reason  Feature  Categorical              NaN   
- 11    guardian  Feature  Categorical              NaN   
- 12  traveltime  Feature      Integer              NaN   
- 13   studytime  Feature      Integer              NaN   
- 14    failures  Feature      Integer              NaN   
- 15   schoolsup  Feature       Binary              NaN   
- 16      famsup  Feature       Binary              NaN   
- 17        paid  Feature       Binary              NaN   
- 18  activities  Feature       Binary              NaN   
- 19     nursery  Feature       Binary              NaN   
- 20      higher  Feature       Binary              NaN   
- 21    internet  Feature       Binary              NaN   
- 22    romantic  Feature       Binary              NaN   
- 23      famrel  Feature      Integer              NaN   
- 24    freetime  Feature      Integer              NaN   
- 25       goout  Feature      Integer              NaN   
- 26        Dalc  Feature      Integer              NaN   
- 27        Walc  Feature      Integer              NaN   
- 28      health  Feature      Integer              NaN   
- 29    absences  Feature      Integer              NaN   
- 30          G1   Target  Categorical              NaN   
- 31          G2   Target  Categorical              NaN   
- 32          G3   Target      Integer              NaN   
- 
-                                           description units missing_values  
- 0   student's school (binary: 'GP' - Gabriel Perei...  None             no  
- 1   student's sex (binary: 'F' - female or 'M' - m...  None             no  
- 2              student's age (numeric: from 15 to 22)  None             no  
- 3   student's home address type (binary: 'U' - urb...  None             no  
- 4   family size (binary: 'LE3' - less or equal to ...  None             no  
- 5   parent's cohabitation status (binary: 'T' - li...  None             no  
- 6   mother's education (numeric: 0 - none,  1 - pr...  None             no  
- 7   father's education (numeric: 0 - none,  1 - pr...  None             no  
- 8   mother's job (nominal: 'teacher', 'health' car...  None             no  
- 9   father's job (nominal: 'teacher', 'health' car...  None             no  
- 10  reason to choose this school (nominal: close t...  None             no  
- 11  student's guardian (nominal: 'mother', 'father...  None             no  
- 12  home to school travel time (numeric: 1 - &lt;15 m...  None             no  
- 13  weekly study time (numeric: 1 - &lt;2 hours, 2 - ...  None             no  
- 14  number of past class failures (numeric: n if 1...  None             no  
- 15      extra educational support (binary: yes or no)  None             no  
- 16     family educational support (binary: yes or no)  None             no  
- 17  extra paid classes within the course subject (...  None             no  
- 18    extra-curricular activities (binary: yes or no)  None             no  
- 19        attended nursery school (binary: yes or no)  None             no  
- 20  wants to take higher education (binary: yes or...  None             no  
- 21        Internet access at home (binary: yes or no)  None             no  
- 22   with a romantic relationship (binary: yes or no)  None             no  
- 23  quality of family relationships (numeric: from...  None             no  
- 24  free time after school (numeric: from 1 - very...  None             no  
- 25  going out with friends (numeric: from 1 - very...  None             no  
- 26  workday alcohol consumption (numeric: from 1 -...  None             no  
- 27  weekend alcohol consumption (numeric: from 1 -...  None             no  
- 28  current health status (numeric: from 1 - very ...  None             no  
- 29  number of school absences (numeric: from 0 to 93)  None             no  
- 30         first period grade (numeric: from 0 to 20)  None             no  
- 31        second period grade (numeric: from 0 to 20)  None             no  
- 32  final grade (numeric: from 0 to 20, output tar...  None             no  }</code></pre>
 </div>
-</div>
-<div id="400a6758" class="cell" data-execution_count="33">
+<div id="400a6758" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>description_table <span class="op">=</span> student_performance.variables.loc[:,[<span class="st">"name"</span>, <span class="st">"type"</span>, <span class="st">"description"</span>]]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>description_table[<span class="st">"description"</span>] <span class="op">=</span> description_table[<span class="st">"description"</span>].<span class="bu">str</span>.encode(<span class="st">"ascii"</span>, <span class="st">"ignore"</span>).<span class="bu">str</span>.decode(<span class="st">"ascii"</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>GT(description_table)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>description_table <span class="op">=</span> student_performance.variables.loc[:,[<span class="st">"name"</span>, <span class="st">"type"</span>, <span class="st">"description"</span>]]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>description_table[<span class="st">"description"</span>] <span class="op">=</span> description_table[<span class="st">"description"</span>].<span class="bu">str</span>.encode(<span class="st">"ascii"</span>, <span class="st">"ignore"</span>).<span class="bu">str</span>.decode(<span class="st">"ascii"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>GT(description_table)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="33">
-<div id="yydgprrdjx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div id="ehmilvawqm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#yydgprrdjx table {
+#ehmilvawqm table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#yydgprrdjx thead, tbody, tfoot, tr, td, th { border-style: none !important; }
+#ehmilvawqm thead, tbody, tfoot, tr, td, th { border-style: none !important; }
  tr { background-color: transparent !important; }
-#yydgprrdjx p { margin: 0 !important; padding: 0 !important; }
- #yydgprrdjx .gt_table { display: table !important; border-collapse: collapse !important; line-height: normal !important; margin-left: auto !important; margin-right: auto !important; color: #333333 !important; font-size: 16px !important; font-weight: normal !important; font-style: normal !important; background-color: #FFFFFF !important; width: auto !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #A8A8A8 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #A8A8A8 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; }
- #yydgprrdjx .gt_caption { padding-top: 4px !important; padding-bottom: 4px !important; }
- #yydgprrdjx .gt_title { color: #333333 !important; font-size: 125% !important; font-weight: initial !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; border-bottom-color: #FFFFFF !important; border-bottom-width: 0 !important; }
- #yydgprrdjx .gt_subtitle { color: #333333 !important; font-size: 85% !important; font-weight: initial !important; padding-top: 3px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; border-top-color: #FFFFFF !important; border-top-width: 0 !important; }
- #yydgprrdjx .gt_heading { background-color: #FFFFFF !important; text-align: center !important; border-bottom-color: #FFFFFF !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
- #yydgprrdjx .gt_bottom_border { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
- #yydgprrdjx .gt_col_headings { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
- #yydgprrdjx .gt_col_heading { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; overflow-x: hidden !important; }
- #yydgprrdjx .gt_column_spanner_outer { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; padding-top: 0 !important; padding-bottom: 0 !important; padding-left: 4px !important; padding-right: 4px !important; }
- #yydgprrdjx .gt_column_spanner_outer:first-child { padding-left: 0 !important; }
- #yydgprrdjx .gt_column_spanner_outer:last-child { padding-right: 0 !important; }
- #yydgprrdjx .gt_column_spanner { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; overflow-x: hidden !important; display: inline-block !important; width: 100% !important; }
- #yydgprrdjx .gt_spanner_row { border-bottom-style: hidden !important; }
- #yydgprrdjx .gt_group_heading { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; text-align: left !important; }
- #yydgprrdjx .gt_empty_group_heading { padding: 0.5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: middle !important; }
- #yydgprrdjx .gt_from_md> :first-child { margin-top: 0 !important; }
- #yydgprrdjx .gt_from_md> :last-child { margin-bottom: 0 !important; }
- #yydgprrdjx .gt_row { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; margin: 10px !important; border-top-style: solid !important; border-top-width: 1px !important; border-top-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; overflow-x: hidden !important; }
- #yydgprrdjx .gt_stub { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; }
- #yydgprrdjx .gt_stub_row_group { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; vertical-align: top !important; }
- #yydgprrdjx .gt_row_group_first td { border-top-width: 2px !important; }
- #yydgprrdjx .gt_row_group_first th { border-top-width: 2px !important; }
- #yydgprrdjx .gt_striped { color: #333333 !important; background-color: #F4F4F4 !important; }
- #yydgprrdjx .gt_table_body { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
- #yydgprrdjx .gt_grand_summary_row { color: #333333 !important; background-color: #FFFFFF !important; text-transform: inherit !important; padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; }
- #yydgprrdjx .gt_first_grand_summary_row_bottom { border-top-style: double !important; border-top-width: 6px !important; border-top-color: #D3D3D3 !important; }
- #yydgprrdjx .gt_last_grand_summary_row_top { border-bottom-style: double !important; border-bottom-width: 6px !important; border-bottom-color: #D3D3D3 !important; }
- #yydgprrdjx .gt_sourcenotes { color: #333333 !important; background-color: #FFFFFF !important; border-bottom-style: none !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; }
- #yydgprrdjx .gt_sourcenote { font-size: 90% !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; text-align: left !important; }
- #yydgprrdjx .gt_left { text-align: left !important; }
- #yydgprrdjx .gt_center { text-align: center !important; }
- #yydgprrdjx .gt_right { text-align: right !important; font-variant-numeric: tabular-nums !important; }
- #yydgprrdjx .gt_font_normal { font-weight: normal !important; }
- #yydgprrdjx .gt_font_bold { font-weight: bold !important; }
- #yydgprrdjx .gt_font_italic { font-style: italic !important; }
- #yydgprrdjx .gt_super { font-size: 65% !important; }
- #yydgprrdjx .gt_footnote_marks { font-size: 75% !important; vertical-align: 0.4em !important; position: initial !important; }
- #yydgprrdjx .gt_asterisk { font-size: 100% !important; vertical-align: 0 !important; }
+#ehmilvawqm p { margin: 0 !important; padding: 0 !important; }
+ #ehmilvawqm .gt_table { display: table !important; border-collapse: collapse !important; line-height: normal !important; margin-left: auto !important; margin-right: auto !important; color: #333333 !important; font-size: 16px !important; font-weight: normal !important; font-style: normal !important; background-color: #FFFFFF !important; width: auto !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #A8A8A8 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #A8A8A8 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; }
+ #ehmilvawqm .gt_caption { padding-top: 4px !important; padding-bottom: 4px !important; }
+ #ehmilvawqm .gt_title { color: #333333 !important; font-size: 125% !important; font-weight: initial !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; border-bottom-color: #FFFFFF !important; border-bottom-width: 0 !important; }
+ #ehmilvawqm .gt_subtitle { color: #333333 !important; font-size: 85% !important; font-weight: initial !important; padding-top: 3px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; border-top-color: #FFFFFF !important; border-top-width: 0 !important; }
+ #ehmilvawqm .gt_heading { background-color: #FFFFFF !important; text-align: center !important; border-bottom-color: #FFFFFF !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
+ #ehmilvawqm .gt_bottom_border { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
+ #ehmilvawqm .gt_col_headings { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; }
+ #ehmilvawqm .gt_col_heading { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; padding-left: 5px !important; padding-right: 5px !important; overflow-x: hidden !important; }
+ #ehmilvawqm .gt_column_spanner_outer { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: normal !important; text-transform: inherit !important; padding-top: 0 !important; padding-bottom: 0 !important; padding-left: 4px !important; padding-right: 4px !important; }
+ #ehmilvawqm .gt_column_spanner_outer:first-child { padding-left: 0 !important; }
+ #ehmilvawqm .gt_column_spanner_outer:last-child { padding-right: 0 !important; }
+ #ehmilvawqm .gt_column_spanner { border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: bottom !important; padding-top: 5px !important; padding-bottom: 5px !important; overflow-x: hidden !important; display: inline-block !important; width: 100% !important; }
+ #ehmilvawqm .gt_spanner_row { border-bottom-style: hidden !important; }
+ #ehmilvawqm .gt_group_heading { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; text-align: left !important; }
+ #ehmilvawqm .gt_empty_group_heading { padding: 0.5px !important; color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; vertical-align: middle !important; }
+ #ehmilvawqm .gt_from_md> :first-child { margin-top: 0 !important; }
+ #ehmilvawqm .gt_from_md> :last-child { margin-bottom: 0 !important; }
+ #ehmilvawqm .gt_row { padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; margin: 10px !important; border-top-style: solid !important; border-top-width: 1px !important; border-top-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 1px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 1px !important; border-right-color: #D3D3D3 !important; vertical-align: middle !important; overflow-x: hidden !important; }
+ #ehmilvawqm .gt_stub { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; }
+ #ehmilvawqm .gt_stub_row_group { color: #333333 !important; background-color: #FFFFFF !important; font-size: 100% !important; font-weight: initial !important; text-transform: inherit !important; border-right-style: solid !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; padding-left: 5px !important; padding-right: 5px !important; vertical-align: top !important; }
+ #ehmilvawqm .gt_row_group_first td { border-top-width: 2px !important; }
+ #ehmilvawqm .gt_row_group_first th { border-top-width: 2px !important; }
+ #ehmilvawqm .gt_striped { color: #333333 !important; background-color: #F4F4F4 !important; }
+ #ehmilvawqm .gt_table_body { border-top-style: solid !important; border-top-width: 2px !important; border-top-color: #D3D3D3 !important; border-bottom-style: solid !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; }
+ #ehmilvawqm .gt_grand_summary_row { color: #333333 !important; background-color: #FFFFFF !important; text-transform: inherit !important; padding-top: 8px !important; padding-bottom: 8px !important; padding-left: 5px !important; padding-right: 5px !important; }
+ #ehmilvawqm .gt_first_grand_summary_row_bottom { border-top-style: double !important; border-top-width: 6px !important; border-top-color: #D3D3D3 !important; }
+ #ehmilvawqm .gt_last_grand_summary_row_top { border-bottom-style: double !important; border-bottom-width: 6px !important; border-bottom-color: #D3D3D3 !important; }
+ #ehmilvawqm .gt_sourcenotes { color: #333333 !important; background-color: #FFFFFF !important; border-bottom-style: none !important; border-bottom-width: 2px !important; border-bottom-color: #D3D3D3 !important; border-left-style: none !important; border-left-width: 2px !important; border-left-color: #D3D3D3 !important; border-right-style: none !important; border-right-width: 2px !important; border-right-color: #D3D3D3 !important; }
+ #ehmilvawqm .gt_sourcenote { font-size: 90% !important; padding-top: 4px !important; padding-bottom: 4px !important; padding-left: 5px !important; padding-right: 5px !important; text-align: left !important; }
+ #ehmilvawqm .gt_left { text-align: left !important; }
+ #ehmilvawqm .gt_center { text-align: center !important; }
+ #ehmilvawqm .gt_right { text-align: right !important; font-variant-numeric: tabular-nums !important; }
+ #ehmilvawqm .gt_font_normal { font-weight: normal !important; }
+ #ehmilvawqm .gt_font_bold { font-weight: bold !important; }
+ #ehmilvawqm .gt_font_italic { font-style: italic !important; }
+ #ehmilvawqm .gt_super { font-size: 65% !important; }
+ #ehmilvawqm .gt_footnote_marks { font-size: 75% !important; vertical-align: 0.4em !important; position: initial !important; }
+ #ehmilvawqm .gt_asterisk { font-size: 100% !important; vertical-align: 0 !important; }
  
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="name" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">name</th>
@@ -629,24 +424,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="60193c26" class="cell">
+<div id="60193c26" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data (as pandas dataframes) </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> student_performance.data.features </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> student_performance.data.targets </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data (as pandas dataframes) </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> student_performance.data.features </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> student_performance.data.targets </span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="bcca2a09" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>X</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -675,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>GP</td>
 <td>F</td>
 <td>18</td>
@@ -699,7 +494,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>4</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>GP</td>
 <td>F</td>
 <td>17</td>
@@ -723,7 +518,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>2</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>GP</td>
 <td>F</td>
 <td>15</td>
@@ -747,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>6</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>GP</td>
 <td>F</td>
 <td>15</td>
@@ -771,7 +566,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>GP</td>
 <td>F</td>
 <td>16</td>
@@ -795,7 +590,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
@@ -819,7 +614,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">644</td>
+<th data-quarto-table-cell-role="th">644</th>
 <td>MS</td>
 <td>F</td>
 <td>19</td>
@@ -843,7 +638,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>4</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">645</td>
+<th data-quarto-table-cell-role="th">645</th>
 <td>MS</td>
 <td>F</td>
 <td>18</td>
@@ -867,7 +662,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>4</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">646</td>
+<th data-quarto-table-cell-role="th">646</th>
 <td>MS</td>
 <td>F</td>
 <td>18</td>
@@ -891,7 +686,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>6</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">647</td>
+<th data-quarto-table-cell-role="th">647</th>
 <td>MS</td>
 <td>M</td>
 <td>17</td>
@@ -915,7 +710,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>6</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">648</td>
+<th data-quarto-table-cell-role="th">648</th>
 <td>MS</td>
 <td>M</td>
 <td>18</td>
@@ -948,13 +743,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="325f05de" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -965,67 +760,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>0</td>
 <td>11</td>
 <td>11</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>9</td>
 <td>11</td>
 <td>11</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>12</td>
 <td>13</td>
 <td>12</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>14</td>
 <td>14</td>
 <td>14</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>11</td>
 <td>13</td>
 <td>13</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
+<th data-quarto-table-cell-role="th">...</th>
 <td>...</td>
 <td>...</td>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">644</td>
+<th data-quarto-table-cell-role="th">644</th>
 <td>10</td>
 <td>11</td>
 <td>10</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">645</td>
+<th data-quarto-table-cell-role="th">645</th>
 <td>15</td>
 <td>15</td>
 <td>16</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">646</td>
+<th data-quarto-table-cell-role="th">646</th>
 <td>11</td>
 <td>12</td>
 <td>9</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">647</td>
+<th data-quarto-table-cell-role="th">647</th>
 <td>10</td>
 <td>10</td>
 <td>10</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">648</td>
+<th data-quarto-table-cell-role="th">648</th>
 <td>10</td>
 <td>11</td>
 <td>11</td>
@@ -1092,13 +887,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

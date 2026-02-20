@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.27">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -78,24 +78,25 @@ div.csl-indent {
 }</style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../3_Preditivo/Classificaçao/SVM/pinguins.html" rel="next">
-<link href="../../../3_Preditivo/Classificaçao/Random_Forest/titanic.html" rel="prev">
+<link href="../../../3_Preditivo/Classificaçao/Regressao_Logistica/cancer.html" rel="prev">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dec5e0acccc0c3f649fee939a7c493d0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-fc8d3d93f0a84b7619e1f8ff6eb63d42.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-74e6a7ae70623c6dcfc9eb3a50a8cbb8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-955267b41c6ba644f908d92906933cc7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -123,7 +124,7 @@ div.csl-indent {
     "search-label": "Procurar"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
@@ -141,7 +142,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -225,7 +226,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../static/logo.png" alt="Logo da Clássicos da Ciência de Dados" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../../static/logo.png" alt="Logo da Clássicos da Ciência de Dados" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../static/logo.png" alt="Logo da Clássicos da Ciência de Dados" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -243,31 +245,46 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../2_Descritivo/descritivo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Descritivo</span></a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Fundamentos</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">1_Fundamentos/Mapa</span></span>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Gráficos</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <a href="../../../2_Descritivo/descritivo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Descritivo</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">ggplot2</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Gráficos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">ggplot2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../2_Descritivo/Gráficos/ggplot/gdp.html" class="sidebar-item-text sidebar-link">
@@ -284,29 +301,29 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../3_Preditivo/predicao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preditivo</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
  <span class="menu-text">Classificação</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Regressão Logística</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../3_Preditivo/Classificaçao/Regressao_Logistica/cancer.html" class="sidebar-item-text sidebar-link">
@@ -317,30 +334,27 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">Random Forest</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../3_Preditivo/Classificaçao/Random_Forest/titanic.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Titanic</span></a>
-  </div>
-</li>
+ <span class="menu-text">3_Preditivo/Classificaçao/Random_Forest/titanic.ipynb</span>
+  </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
  <span class="menu-text">KNN</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 show">  
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../3_Preditivo/Classificaçao/KNN/iris.html" class="sidebar-item-text sidebar-link active">
@@ -351,13 +365,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
  <span class="menu-text">SVM</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../3_Preditivo/Classificaçao/SVM/pinguins.html" class="sidebar-item-text sidebar-link">
@@ -372,20 +386,20 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../3_Preditivo/Regressao/regressao.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regressão</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../3_Preditivo/Regressao/Regressao_Linear/regressao_linear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Regressão Linear</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+ <span class="menu-text">3_Preditivo/Regressao/Regressao_Linear/regressao_linear.ipynb</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../3_Preditivo/Regressao/Regressao_Linear/housing.html" class="sidebar-item-text sidebar-link">
@@ -396,13 +410,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
  <span class="menu-text">PLS</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../3_Preditivo/Regressao/PLS/gasoline.html" class="sidebar-item-text sidebar-link">
@@ -415,22 +429,22 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
  <span class="menu-text">Série Temporal</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false">
  <span class="menu-text">ARIMA</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../3_Preditivo/Séries Temporais/ARIMA/airpassengers.html" class="sidebar-item-text sidebar-link">
@@ -447,20 +461,20 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../4_Diagnostico/diagnostico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Diagnóstico</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false">
  <span class="menu-text">Controle Sintético</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../4_Diagnostico/Controle_Sintetico/smoking.html" class="sidebar-item-text sidebar-link">
@@ -471,13 +485,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false">
  <span class="menu-text">Teste A/B</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../4_Diagnostico/Teste_AB/teste_ab.html" class="sidebar-item-text sidebar-link">
@@ -492,32 +506,26 @@ window.Quarto = {
       <div class="sidebar-item-container"> 
             <a href="../../../5_Prescritivo/prescritivo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prescritivo</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="true" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="false">
  <span class="menu-text">Programação Linear</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false" aria-label="Alternar seção">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="false" aria-label="Alternar seção">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-21" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../5_Prescritivo/PL/dieta.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dieta</span></a>
-  </div>
-</li>
+ <span class="menu-text">5_Prescritivo/PL/dieta.ipynb</span>
+  </li>
           <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../5_Prescritivo/PL/caixeiro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Caixeiro Viajante</span></a>
-  </div>
-</li>
+ <span class="menu-text">5_Prescritivo/PL/caixeiro.ipynb</span>
+  </li>
       </ul>
   </li>
       </ul>
@@ -532,28 +540,28 @@ window.Quarto = {
     <h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#importando-as-bibliotecas" id="toc-importando-as-bibliotecas" class="nav-link active" data-scroll-target="#importando-as-bibliotecas"><span class="header-section-number">0.1</span> Importando as bibliotecas</a></li>
-  <li><a href="#conheçendo-o-dataset-iris" id="toc-conheçendo-o-dataset-iris" class="nav-link" data-scroll-target="#conheçendo-o-dataset-iris"><span class="header-section-number">0.2</span> Conheçendo o Dataset Iris</a>
+  <li><a href="#importando-as-bibliotecas" id="toc-importando-as-bibliotecas" class="nav-link active" data-scroll-target="#importando-as-bibliotecas">Importando as bibliotecas</a></li>
+  <li><a href="#conheçendo-o-dataset-iris" id="toc-conheçendo-o-dataset-iris" class="nav-link" data-scroll-target="#conheçendo-o-dataset-iris">Conheçendo o Dataset Iris</a>
   <ul>
-  <li><a href="#aula-de-inglês" id="toc-aula-de-inglês" class="nav-link" data-scroll-target="#aula-de-inglês"><span class="header-section-number">0.2.1</span> Aula de Inglês</a></li>
-  <li><a href="#um-pouco-mais-de-conhecimento" id="toc-um-pouco-mais-de-conhecimento" class="nav-link" data-scroll-target="#um-pouco-mais-de-conhecimento"><span class="header-section-number">0.2.2</span> Um pouco mais de conhecimento</a></li>
-  <li><a href="#objetivos-do-estudo" id="toc-objetivos-do-estudo" class="nav-link" data-scroll-target="#objetivos-do-estudo"><span class="header-section-number">0.2.3</span> Objetivos do estudo</a></li>
+  <li><a href="#aula-de-inglês" id="toc-aula-de-inglês" class="nav-link" data-scroll-target="#aula-de-inglês">Aula de Inglês</a></li>
+  <li><a href="#um-pouco-mais-de-conhecimento" id="toc-um-pouco-mais-de-conhecimento" class="nav-link" data-scroll-target="#um-pouco-mais-de-conhecimento">Um pouco mais de conhecimento</a></li>
+  <li><a href="#objetivos-do-estudo" id="toc-objetivos-do-estudo" class="nav-link" data-scroll-target="#objetivos-do-estudo">Objetivos do estudo</a></li>
   </ul></li>
-  <li><a href="#hands-on" id="toc-hands-on" class="nav-link" data-scroll-target="#hands-on"><span class="header-section-number">1</span> Hands-On</a>
+  <li><a href="#hands-on" id="toc-hands-on" class="nav-link" data-scroll-target="#hands-on">Hands-On</a>
   <ul>
-  <li><a href="#carregando-o-dataset" id="toc-carregando-o-dataset" class="nav-link" data-scroll-target="#carregando-o-dataset"><span class="header-section-number">1.1</span> Carregando o dataset</a></li>
-  <li><a href="#análise-exploratória-dos-dados" id="toc-análise-exploratória-dos-dados" class="nav-link" data-scroll-target="#análise-exploratória-dos-dados"><span class="header-section-number">1.2</span> Análise Exploratória dos Dados</a>
+  <li><a href="#carregando-o-dataset" id="toc-carregando-o-dataset" class="nav-link" data-scroll-target="#carregando-o-dataset">Carregando o dataset</a></li>
+  <li><a href="#análise-exploratória-dos-dados" id="toc-análise-exploratória-dos-dados" class="nav-link" data-scroll-target="#análise-exploratória-dos-dados">Análise Exploratória dos Dados</a>
   <ul>
-  <li><a href="#balanceamento-das-classes" id="toc-balanceamento-das-classes" class="nav-link" data-scroll-target="#balanceamento-das-classes"><span class="header-section-number">1.2.1</span> Balanceamento das classes</a></li>
-  <li><a href="#estatísticas-descritivas" id="toc-estatísticas-descritivas" class="nav-link" data-scroll-target="#estatísticas-descritivas"><span class="header-section-number">1.2.2</span> Estatísticas descritivas</a></li>
-  <li><a href="#distribuições" id="toc-distribuições" class="nav-link" data-scroll-target="#distribuições"><span class="header-section-number">1.2.3</span> Distribuições</a></li>
+  <li><a href="#balanceamento-das-classes" id="toc-balanceamento-das-classes" class="nav-link" data-scroll-target="#balanceamento-das-classes">Balanceamento das classes</a></li>
+  <li><a href="#estatísticas-descritivas" id="toc-estatísticas-descritivas" class="nav-link" data-scroll-target="#estatísticas-descritivas">Estatísticas descritivas</a></li>
+  <li><a href="#distribuições" id="toc-distribuições" class="nav-link" data-scroll-target="#distribuições">Distribuições</a></li>
   </ul></li>
-  <li><a href="#brainstorming" id="toc-brainstorming" class="nav-link" data-scroll-target="#brainstorming"><span class="header-section-number">1.3</span> Brainstorming</a>
+  <li><a href="#brainstorming" id="toc-brainstorming" class="nav-link" data-scroll-target="#brainstorming">Brainstorming</a>
   <ul>
-  <li><a href="#preparando-os-dados-para-modelagem" id="toc-preparando-os-dados-para-modelagem" class="nav-link" data-scroll-target="#preparando-os-dados-para-modelagem"><span class="header-section-number">1.3.1</span> Preparando os dados para modelagem</a></li>
-  <li><a href="#regressão-logística" id="toc-regressão-logística" class="nav-link" data-scroll-target="#regressão-logística"><span class="header-section-number">1.3.2</span> Regressão Logística</a></li>
-  <li><a href="#k-nearest-neighbors-knn" id="toc-k-nearest-neighbors-knn" class="nav-link" data-scroll-target="#k-nearest-neighbors-knn"><span class="header-section-number">1.3.3</span> K-Nearest Neighbors (KNN)</a></li>
-  <li><a href="#árvores-de-decisão" id="toc-árvores-de-decisão" class="nav-link" data-scroll-target="#árvores-de-decisão"><span class="header-section-number">1.3.4</span> Árvores de Decisão</a></li>
+  <li><a href="#preparando-os-dados-para-modelagem" id="toc-preparando-os-dados-para-modelagem" class="nav-link" data-scroll-target="#preparando-os-dados-para-modelagem">Preparando os dados para modelagem</a></li>
+  <li><a href="#regressão-logística" id="toc-regressão-logística" class="nav-link" data-scroll-target="#regressão-logística">Regressão Logística</a></li>
+  <li><a href="#k-nearest-neighbors-knn" id="toc-k-nearest-neighbors-knn" class="nav-link" data-scroll-target="#k-nearest-neighbors-knn">K-Nearest Neighbors (KNN)</a></li>
+  <li><a href="#árvores-de-decisão" id="toc-árvores-de-decisão" class="nav-link" data-scroll-target="#árvores-de-decisão">Árvores de Decisão</a></li>
   </ul></li>
   <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
   </ul></li>
@@ -582,12 +590,12 @@ window.Quarto = {
 </header>
 
 
-<section id="importando-as-bibliotecas" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="importando-as-bibliotecas"><span class="header-section-number">0.1</span> Importando as bibliotecas</h2>
+<section id="importando-as-bibliotecas" class="level2">
+<h2 class="anchored" data-anchor-id="importando-as-bibliotecas">Importando as bibliotecas</h2>
 <div id="861ad878" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> st</span>
@@ -597,17 +605,17 @@ window.Quarto = {
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, aes, geom_point, geom_line, geom_histogram, geom_density, facet_wrap, labs, theme_minimal</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> janitor <span class="im">import</span> clean_names</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="conheçendo-o-dataset-iris" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="conheçendo-o-dataset-iris"><span class="header-section-number">0.2</span> Conheçendo o Dataset Iris</h2>
+<section id="conheçendo-o-dataset-iris" class="level2">
+<h2 class="anchored" data-anchor-id="conheçendo-o-dataset-iris">Conheçendo o Dataset Iris</h2>
 <p>O dataset Iris é um conjunto de dados clássico em aprendizado de máquina e estatística, frequentemente utilizado para demonstração de algoritmos de classificação. Ele contém informações sobre três espécies diferentes de íris (Iris setosa, Iris versicolor e Iris virginica) com quatro características medidas: comprimento e largura das sépalas e pétalas.</p>
 <p>Ele é um dataset tão clássico que foi utilizado em diversos estudos e tutoriais, incluindo o trabalho de R.A. Fisher em 1936, que introduziu o conceito de análise discriminante linear. <span class="citation" data-cites="unwin_iris_2021">Unwin; Kleinman (<a href="#ref-unwin_iris_2021" role="doc-biblioref">2021</a>)</span></p>
 <p>Inclusive faz parte dos datasets padrão da biblioteca Scikit-learn, facilitando seu acesso para análise e modelagem.</p>
-<section id="aula-de-inglês" class="level3" data-number="0.2.1">
-<h3 data-number="0.2.1" class="anchored" data-anchor-id="aula-de-inglês"><span class="header-section-number">0.2.1</span> Aula de Inglês</h3>
+<section id="aula-de-inglês" class="level3">
+<h3 class="anchored" data-anchor-id="aula-de-inglês">Aula de Inglês</h3>
 <ul>
 <li>Petal: Pétala</li>
 <li>Sepal: Sépala</li>
@@ -616,8 +624,8 @@ window.Quarto = {
 <li>Species: Espécie</li>
 </ul>
 </section>
-<section id="um-pouco-mais-de-conhecimento" class="level3" data-number="0.2.2">
-<h3 data-number="0.2.2" class="anchored" data-anchor-id="um-pouco-mais-de-conhecimento"><span class="header-section-number">0.2.2</span> Um pouco mais de conhecimento</h3>
+<section id="um-pouco-mais-de-conhecimento" class="level3">
+<h3 class="anchored" data-anchor-id="um-pouco-mais-de-conhecimento">Um pouco mais de conhecimento</h3>
 <p>Se você ta curioso apra saber a diferença entre as espécies como também a diferença entre sépala e pétala, aqui vai:<br>
 <img src="../../static/iris-tipos.png" class="img-fluid" alt="Diferença entre sépala e pétala"></p>
 <ul>
@@ -626,8 +634,8 @@ window.Quarto = {
 <li>Conseguimos prever a espécie de uma íris com base nas medidas das sépalas e pétalas usando um moadelo de classificação?</li>
 </ul>
 </section>
-<section id="objetivos-do-estudo" class="level3" data-number="0.2.3">
-<h3 data-number="0.2.3" class="anchored" data-anchor-id="objetivos-do-estudo"><span class="header-section-number">0.2.3</span> Objetivos do estudo</h3>
+<section id="objetivos-do-estudo" class="level3">
+<h3 class="anchored" data-anchor-id="objetivos-do-estudo">Objetivos do estudo</h3>
 <p><strong>Hipótese:</strong> Acreditamos ser possível diferenciar as espécies de íris com base nas medidas das sépalas e pétalas.</p>
 <p><strong>Objetivos:</strong></p>
 <ul class="task-list">
@@ -636,27 +644,27 @@ window.Quarto = {
 </ul>
 </section>
 </section>
-<section id="hands-on" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Hands-On</h1>
-<section id="carregando-o-dataset" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="carregando-o-dataset"><span class="header-section-number">1.1</span> Carregando o dataset</h2>
+<section id="hands-on" class="level1">
+<h1>Hands-On</h1>
+<section id="carregando-o-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="carregando-o-dataset">Carregando o dataset</h2>
 <div id="27e094e8" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> load_iris() <span class="co"># Aqui temos um conjunto de dados embutido no scikit-learn</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df_iris <span class="op">=</span> pd.DataFrame(iris.data, columns<span class="op">=</span>iris.feature_names)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df_iris[<span class="st">'target'</span>] <span class="op">=</span> iris.target</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_iris[<span class="st">'target_name'</span>] <span class="op">=</span> df_iris[<span class="st">'target'</span>].<span class="bu">map</span>({<span class="dv">0</span>: iris.target_names[<span class="dv">0</span>], <span class="dv">1</span>: iris.target_names[<span class="dv">1</span>], <span class="dv">2</span>: iris.target_names[<span class="dv">2</span>]})</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df_iris.drop(columns<span class="op">=</span>[<span class="st">'target'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df_iris[<span class="st">'target_name'</span>] <span class="op">=</span> pd.Categorical(df_iris[<span class="st">'target_name'</span>])</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>df_iris.head(<span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>df_iris.head(<span class="dv">3</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -669,7 +677,7 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>5.1</td>
 <td>3.5</td>
 <td>1.4</td>
@@ -677,7 +685,7 @@ window.Quarto = {
 <td>setosa</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>4.9</td>
 <td>3.0</td>
 <td>1.4</td>
@@ -685,7 +693,7 @@ window.Quarto = {
 <td>setosa</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>4.7</td>
 <td>3.2</td>
 <td>1.3</td>
@@ -701,7 +709,7 @@ window.Quarto = {
 <div id="1154d8fc" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_iris.info()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df_iris.info()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.DataFrame'&gt;
@@ -720,15 +728,15 @@ memory usage: 5.0 KB</code></pre>
 </div>
 <p>Como podemos ver temos as medidas do comprimento e largura das sépalas e pétalas de três espécies diferentes de íris: Setosa, Versicolor e Virginica.</p>
 </section>
-<section id="análise-exploratória-dos-dados" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="análise-exploratória-dos-dados"><span class="header-section-number">1.2</span> Análise Exploratória dos Dados</h2>
-<section id="balanceamento-das-classes" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="balanceamento-das-classes"><span class="header-section-number">1.2.1</span> Balanceamento das classes</h3>
+<section id="análise-exploratória-dos-dados" class="level2">
+<h2 class="anchored" data-anchor-id="análise-exploratória-dos-dados">Análise Exploratória dos Dados</h2>
+<section id="balanceamento-das-classes" class="level3">
+<h3 class="anchored" data-anchor-id="balanceamento-das-classes">Balanceamento das classes</h3>
 <p>Temos um conjunto de dados perfeitamente balanceado, com 50 amostras para cada espécie de íris.</p>
 <div id="0e554612" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_iris[<span class="st">'target_name'</span>].value_counts()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_iris[<span class="st">'target_name'</span>].value_counts()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>target_name
@@ -739,18 +747,18 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="estatísticas-descritivas" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="estatísticas-descritivas"><span class="header-section-number">1.2.2</span> Estatísticas descritivas</h3>
+<section id="estatísticas-descritivas" class="level3">
+<h3 class="anchored" data-anchor-id="estatísticas-descritivas">Estatísticas descritivas</h3>
 <div id="11c590f3" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_iris.describe()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_iris.describe()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -762,56 +770,56 @@ Name: count, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">count</td>
+<th data-quarto-table-cell-role="th">count</th>
 <td>150.000000</td>
 <td>150.000000</td>
 <td>150.000000</td>
 <td>150.000000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">mean</td>
+<th data-quarto-table-cell-role="th">mean</th>
 <td>5.843333</td>
 <td>3.057333</td>
 <td>3.758000</td>
 <td>1.199333</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">std</td>
+<th data-quarto-table-cell-role="th">std</th>
 <td>0.828066</td>
 <td>0.435866</td>
 <td>1.765298</td>
 <td>0.762238</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">min</td>
+<th data-quarto-table-cell-role="th">min</th>
 <td>4.300000</td>
 <td>2.000000</td>
 <td>1.000000</td>
 <td>0.100000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">25%</td>
+<th data-quarto-table-cell-role="th">25%</th>
 <td>5.100000</td>
 <td>2.800000</td>
 <td>1.600000</td>
 <td>0.300000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">50%</td>
+<th data-quarto-table-cell-role="th">50%</th>
 <td>5.800000</td>
 <td>3.000000</td>
 <td>4.350000</td>
 <td>1.300000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">75%</td>
+<th data-quarto-table-cell-role="th">75%</th>
 <td>6.400000</td>
 <td>3.300000</td>
 <td>5.100000</td>
 <td>1.800000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">max</td>
+<th data-quarto-table-cell-role="th">max</th>
 <td>7.900000</td>
 <td>4.400000</td>
 <td>6.900000</td>
@@ -824,19 +832,19 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="distribuições" class="level3" data-number="1.2.3">
-<h3 data-number="1.2.3" class="anchored" data-anchor-id="distribuições"><span class="header-section-number">1.2.3</span> Distribuições</h3>
+<section id="distribuições" class="level3">
+<h3 class="anchored" data-anchor-id="distribuições">Distribuições</h3>
 <div id="c5c5ec90" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span>df_iris.melt(id_vars<span class="op">=</span><span class="st">'target_name'</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_long.head()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span>df_iris.melt(id_vars<span class="op">=</span><span class="st">'target_name'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_long.head()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -847,31 +855,31 @@ Name: count, dtype: int64</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
+<th data-quarto-table-cell-role="th">0</th>
 <td>setosa</td>
 <td>sepal length (cm)</td>
 <td>5.1</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
+<th data-quarto-table-cell-role="th">1</th>
 <td>setosa</td>
 <td>sepal length (cm)</td>
 <td>4.9</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
+<th data-quarto-table-cell-role="th">2</th>
 <td>setosa</td>
 <td>sepal length (cm)</td>
 <td>4.7</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
+<th data-quarto-table-cell-role="th">3</th>
 <td>setosa</td>
 <td>sepal length (cm)</td>
 <td>4.6</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<th data-quarto-table-cell-role="th">4</th>
 <td>setosa</td>
 <td>sepal length (cm)</td>
 <td>5.0</td>
@@ -885,11 +893,11 @@ Name: count, dtype: int64</code></pre>
 <div id="e4c6f105" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ggplot(df_long, aes(x<span class="op">=</span><span class="st">'value'</span>, fill<span class="op">=</span><span class="st">'target_name'</span>)) <span class="op">+</span> <span class="op">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ggplot(df_long, aes(x<span class="op">=</span><span class="st">'value'</span>, fill<span class="op">=</span><span class="st">'target_name'</span>)) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    geom_density(alpha<span class="op">=</span><span class="fl">0.5</span>) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    facet_wrap(<span class="st">'~variable'</span>, scales<span class="op">=</span><span class="st">'free'</span>) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    labs(title<span class="op">=</span><span class="st">'Distribuições das características do Iris Dataset'</span>, x<span class="op">=</span><span class="st">'Valor'</span>, y<span class="op">=</span><span class="st">'Densidade'</span>) <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    theme_minimal()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    theme_minimal()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
@@ -905,7 +913,7 @@ Name: count, dtype: int64</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Primeiras Impressões
+<span class="screen-reader-only">Dica</span>Primeiras Impressões
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -915,8 +923,8 @@ Primeiras Impressões
 </div>
 </section>
 </section>
-<section id="brainstorming" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="brainstorming"><span class="header-section-number">1.3</span> Brainstorming</h2>
+<section id="brainstorming" class="level2">
+<h2 class="anchored" data-anchor-id="brainstorming">Brainstorming</h2>
 <p>Como estamos lidando com um problema de classificação temos algumas opções de algoritmos que podemos utilizar, a lista a seguir apresenta os algoritmos do mais simples aos mais complexos:</p>
 <ul>
 <li>Logistic Regression</li>
@@ -924,49 +932,49 @@ Primeiras Impressões
 <li>Decision Trees</li>
 </ul>
 <p>Esta será a nossa próxima etapa: construir modelos preditivos para classificar as espécies de íris com base nas medidas das sépalas e pétalas.</p>
-<section id="preparando-os-dados-para-modelagem" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="preparando-os-dados-para-modelagem"><span class="header-section-number">1.3.1</span> Preparando os dados para modelagem</h3>
+<section id="preparando-os-dados-para-modelagem" class="level3">
+<h3 class="anchored" data-anchor-id="preparando-os-dados-para-modelagem">Preparando os dados para modelagem</h3>
 <div id="5d8188ba" class="cell" data-execution_count="58">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, ConfusionMatrixDisplay</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report, ConfusionMatrixDisplay</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="4b5936ae" class="cell" data-execution_count="61">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> clean_names(df_iris, strip_underscores<span class="op">=</span><span class="va">True</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> clean_names(df_iris, strip_underscores<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>X_features <span class="op">=</span> X.drop(columns<span class="op">=</span>[<span class="st">'target_name'</span>])</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y_target <span class="op">=</span> X[<span class="st">'target_name'</span>]</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X_features, y_target, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X_features, y_target, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
-<section id="regressão-logística" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="regressão-logística"><span class="header-section-number">1.3.2</span> Regressão Logística</h3>
+<section id="regressão-logística" class="level3">
+<h3 class="anchored" data-anchor-id="regressão-logística">Regressão Logística</h3>
 <p><span class="math display">\[ P(Y=i|X) = \frac{e^{\beta_{0i} + \beta_{1i}X_1 + \beta_{2i}X_2 + ... + \beta_{ki}X_k}}{1 + \sum_{j=1}^{m-1} e^{\beta_{0j} + \beta_{1j}X_1 + \beta_{2j}X_2 + ... + \beta_{kj}X_k}} \]</span></p>
 <div id="d8e97fb5" class="cell" data-execution_count="62">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="4ed8931e" class="cell" data-execution_count="72">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>reglog_model <span class="op">=</span> LogisticRegression()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>reglog_model <span class="op">=</span> LogisticRegression()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>reglog_model.fit(X_train, y_train)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> reglog_model.predict(X_test)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> reglog_model.predict(X_test)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="8dc5ea72" class="cell" data-execution_count="74">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>disp_reglog <span class="op">=</span> ConfusionMatrixDisplay.from_estimator(reglog_model, X_test, y_pred, cmap<span class="op">=</span><span class="st">'Blues'</span>, normalize<span class="op">=</span><span class="va">None</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>disp_reglog <span class="op">=</span> ConfusionMatrixDisplay.from_estimator(reglog_model, X_test, y_pred, cmap<span class="op">=</span><span class="st">'Blues'</span>, normalize<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>disp_reglog.ax_.set_title(<span class="st">'Matriz de Confusão do Logistic Regression no Iris Dataset'</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -977,23 +985,23 @@ Primeiras Impressões
 </div>
 </div>
 </section>
-<section id="k-nearest-neighbors-knn" class="level3" data-number="1.3.3">
-<h3 data-number="1.3.3" class="anchored" data-anchor-id="k-nearest-neighbors-knn"><span class="header-section-number">1.3.3</span> K-Nearest Neighbors (KNN)</h3>
+<section id="k-nearest-neighbors-knn" class="level3">
+<h3 class="anchored" data-anchor-id="k-nearest-neighbors-knn">K-Nearest Neighbors (KNN)</h3>
 <p><span class="math display">\[ P(Y=i|X) = \frac{K_i}{K} \]</span></p>
 <div id="5ac220c8" class="cell" data-execution_count="65">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="cf01c33c" class="cell" data-execution_count="66">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>knn_model <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">3</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>knn_model <span class="op">=</span> KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>knn_model.fit(X_train, y_train)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> knn_model.predict(X_test)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
@@ -1011,9 +1019,9 @@ weighted avg       1.00      1.00      1.00        75
 <div id="369b9150" class="cell" data-execution_count="67">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>disp <span class="op">=</span> ConfusionMatrixDisplay.from_estimator(knn_model, X_test, y_test, cmap<span class="op">=</span><span class="st">'Blues'</span>, normalize<span class="op">=</span><span class="va">None</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>disp <span class="op">=</span> ConfusionMatrixDisplay.from_estimator(knn_model, X_test, y_test, cmap<span class="op">=</span><span class="st">'Blues'</span>, normalize<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>disp.ax_.set_title(<span class="st">'Matriz de Confusão do KNN no Iris Dataset'</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1024,21 +1032,21 @@ weighted avg       1.00      1.00      1.00        75
 </div>
 </div>
 </section>
-<section id="árvores-de-decisão" class="level3" data-number="1.3.4">
-<h3 data-number="1.3.4" class="anchored" data-anchor-id="árvores-de-decisão"><span class="header-section-number">1.3.4</span> Árvores de Decisão</h3>
+<section id="árvores-de-decisão" class="level3">
+<h3 class="anchored" data-anchor-id="árvores-de-decisão">Árvores de Decisão</h3>
 <div id="e72826b4" class="cell" data-execution_count="68">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div id="8265ca5d" class="cell" data-execution_count="75">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tree_model <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tree_model <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>tree_model.fit(X_train, y_train)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> tree_model.predict(X_test)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred))</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>              precision    recall  f1-score   support
@@ -1056,9 +1064,9 @@ weighted avg       1.00      1.00      1.00        75
 <div id="a92062c9" class="cell" data-execution_count="76">
 <details class="code-fold">
 <summary>Mostrar/Ocultar Código</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>disp <span class="op">=</span> ConfusionMatrixDisplay.from_estimator(tree_model, X_test, y_test, cmap<span class="op">=</span><span class="st">'Blues'</span>, normalize<span class="op">=</span><span class="va">None</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>disp <span class="op">=</span> ConfusionMatrixDisplay.from_estimator(tree_model, X_test, y_test, cmap<span class="op">=</span><span class="st">'Blues'</span>, normalize<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>disp.ax_.set_title(<span class="st">'Matriz de Confusão do Decision Tree no Iris Dataset'</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1134,13 +1142,14 @@ UNWIN, Antony; KLEINMAN, Kim. <a href="https://doi.org/10.1111/1740-9713.01589">
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1484,8 +1493,8 @@ UNWIN, Antony; KLEINMAN, Kim. <a href="https://doi.org/10.1111/1740-9713.01589">
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../3_Preditivo/Classificaçao/Random_Forest/titanic.html" class="pagination-link" aria-label="Titanic">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Titanic</span>
+      <a href="../../../3_Preditivo/Classificaçao/Regressao_Logistica/cancer.html" class="pagination-link" aria-label="Breast Cancer">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Breast Cancer</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
