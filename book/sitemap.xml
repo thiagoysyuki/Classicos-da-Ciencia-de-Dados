@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://classicos-ds.netlify.app/5_Prescritivo/prescritivo.html</loc>
-    <lastmod>2026-01-26T20:02:08.439Z</lastmod>
+    <lastmod>2026-02-17T02:00:48.647Z</lastmod>
   </url>
   <url>
     <loc>https://classicos-ds.netlify.app/5_Prescritivo/PL/caixeiro.html</loc>
@@ -79,5 +79,85 @@
   <url>
     <loc>https://classicos-ds.netlify.app/about.html</loc>
     <lastmod>2026-01-24T10:42:36.064Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressão/Regressão Linear/regressao_linear.html</loc>
+    <lastmod>2026-02-16T23:47:32.486Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/Regressao_Linear/wine_quality.html</loc>
+    <lastmod>2026-01-27T00:11:03.085Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/Regressao_Linear/housing.html</loc>
+    <lastmod>2026-02-16T23:03:47.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/boston_houses.html</loc>
+    <lastmod>2026-02-16T19:19:25.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/PLS/gasoline.html</loc>
+    <lastmod>2026-02-16T20:58:05.438Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/Regressao_Linear/regressao_linear.html</loc>
+    <lastmod>2026-02-16T23:47:32.486Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Classificaçao/SVM/pinguins.html</loc>
+    <lastmod>2026-01-26T23:50:35.819Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Classificaçao/Random_Forest/titanic.html</loc>
+    <lastmod>2026-01-26T19:54:22.275Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Classificaçao/KNN/iris.html</loc>
+    <lastmod>2026-02-16T20:42:20.966Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Classificaçao/Regressão Logística/cancer.html</loc>
+    <lastmod>2026-02-16T19:19:29.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Classificaçao/Regressao_Logistica/cancer.html</loc>
+    <lastmod>2026-02-17T02:11:46.753Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/regressao.html</loc>
+    <lastmod>2026-02-16T23:51:47.471Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/5_Prescritivo/Prog_Linear/dieta.html</loc>
+    <lastmod>2026-02-16T23:26:31.760Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/Regressao_Linear/boston_houses.html</loc>
+    <lastmod>2026-02-16T19:19:25.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Classificaçao/Ensemble/Random_Forest/titanic.html</loc>
+    <lastmod>2026-01-26T19:54:22.275Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/Ensemble/Random_Forest/titanic.html</loc>
+    <lastmod>2026-01-26T19:54:22.275Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/5_Prescritivo/Prog_Linear/caixeiro.html</loc>
+    <lastmod>2026-01-26T20:00:16.705Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/Regressao_Linear/students-performance.html</loc>
+    <lastmod>2026-02-19T22:43:49.329Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/1_Fundamentos/Aprendizado_Maquina/Interpretabilidade_vs_Explicabilidade.html</loc>
+    <lastmod>2026-02-19T21:49:32.769Z</lastmod>
+  </url>
+  <url>
+    <loc>https://classicos-ds.netlify.app/3_Preditivo/Regressao/Regressao_Linear/index.html</loc>
+    <lastmod>2026-02-19T21:41:36.675Z</lastmod>
   </url>
 </urlset>

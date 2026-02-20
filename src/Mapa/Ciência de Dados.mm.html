@@ -1,0 +1,520 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Ci&#234;ncia de Dados</title>
+<style type="text/css">
+    li { list-style: none;  margin: 0; }
+    p { margin: 0; }
+    span.foldopened { color: white; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: visible;
+    cursor:pointer; }
+
+
+    span.foldclosed { color: #666666; font-size: xx-small;
+    border-width: 1; font-family: monospace; padding: 0em 0.25em 0em 0.25em; background: #e0e0e0;
+    VISIBILITY: hidden;
+    cursor:pointer; }
+
+    span.foldspecial { color: #666666; font-size: xx-small; border-style: none solid solid none;
+    border-color: #CCCCCC; border-width: 1; font-family: sans-serif; padding: 0em 0.1em 0em 0.1em; background: #e0e0e0;
+    cursor:pointer; }
+
+    span.l { color: red; font-weight: bold; }
+
+    a.mapnode:link {text-decoration: none; color: black; }
+    a.mapnode:visited {text-decoration: none; color: black; }
+    a.mapnode:active {text-decoration: none; color: black; }
+    a.mapnode:hover {text-decoration: none; color: black; background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+
+<script type="text/javascript">
+   // Here we implement folding. It works fine with MSIE5.5, MSIE6.0 and
+   // Mozilla 0.9.6.
+
+   if (document.layers) {
+      //Netscape 4 specific code
+      pre = 'document.';
+      post = ''; }
+   if (document.getElementById) {
+      //Netscape 6 specific code
+      pre = 'document.getElementById("';
+      post = '").style'; }
+   if (document.all) {
+      //IE4+ specific code
+      pre = 'document.all.';
+      post = '.style'; }
+
+function layer_exists(layer) {
+   try {
+      eval(pre + layer + post);
+      return true; }
+   catch (error) {
+      return false; }}
+
+function show_layer(layer) {
+   eval(pre + layer + post).position = 'relative'; 
+   eval(pre + layer + post).visibility = 'visible'; }
+
+function hide_layer(layer) {
+   eval(pre + layer + post).visibility = 'hidden';
+   eval(pre + layer + post).position = 'absolute'; }
+
+function hide_folder(folder) {
+    hide_folding_layer(folder)
+    show_layer('show'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function show_folder(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_layer('show'+folder+'_'+i); }
+}
+function show_folder_completely(folder) {
+    // Precondition: all subfolders are folded
+
+    show_layer('hide'+folder);
+    hide_layer('show'+folder);
+    show_layer('fold'+folder);
+
+    scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+
+    var i;
+    for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+
+
+function hide_folding_layer(folder) {
+   var i;
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folding_layer(folder+'_'+i); }
+
+   hide_layer('hide'+folder);
+   hide_layer('show'+folder);
+   hide_layer('fold'+folder);
+
+   scrollBy(0,0); // This is a work around to make it work in Browsers (Explorer, Mozilla)
+}
+
+function fold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       hide_folder(folder+'_'+i); }
+}
+
+function unfold_document() {
+   var i;
+   var folder = '1';
+   for (i=1; layer_exists('fold'+folder+'_'+i); ++i) {
+       show_folder_completely(folder+'_'+i); }
+}
+
+</script>
+<SPAN class="foldspecial" onclick="fold_document()">All +</SPAN>
+<SPAN class="foldspecial" onclick="unfold_document()">All -</SPAN>
+<p><span style="color: #000000;">Ci&#234;ncia de Dados</span>
+<ul><li><span style="color: #00b439;">Descritivo</span>
+<ul><li><span style="color: #990000;">Agrupamentos</span>
+<ul><li><span style="color: #111111;">Cluster Hier&#225;rquico</span>
+
+</li>
+<li><span style="color: #111111;">DBSCAN</span>
+
+</li>
+<li><span style="color: #111111;">GMM</span>
+
+</li>
+<li><span style="color: #111111;">K-Means</span>
+
+</li>
+<li><span style="color: #111111;">Mean-Shift</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #990000;">Associa&#231;&#227;o</span>
+<ul><li><span style="color: #111111;">ANACOR</span>
+
+</li>
+<li><span style="color: #111111;">ACM</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #990000;">Gr&#225;ficos</span>
+<ul><li><span id="show1_1" class="foldclosed" onClick="show_folder('1_1')" style="POSITION: absolute">+</span> <span id="hide1_1" class="foldopened" onClick="hide_folder('1_1')">-</span>
+<span style="color: #111111;">R</span>
+<ul id="fold1_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">ggplot2</span>
+
+</li>
+<li><span style="color: #111111;">plotly</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_2" class="foldclosed" onClick="show_folder('1_2')" style="POSITION: absolute">+</span> <span id="hide1_2" class="foldopened" onClick="hide_folder('1_2')">-</span>
+<span style="color: #111111;">Python</span>
+<ul id="fold1_2" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">plotnine</span>
+
+</li>
+<li><span style="color: #111111;">seaborn</span>
+
+</li>
+<li><span style="color: #111111;">matplotlib</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #990000;">Redu&#231;&#227;o de Dimensionalidade</span>
+<ul><li><span style="color: #111111;">PCA</span>
+
+</li>
+<li><span style="color: #111111;">An&#225;lise Fatorial</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #00b439;">Diagn&#243;stico</span>
+<ul><li><span style="color: #990000;">Infer&#234;ncia Causal</span>
+<ul><li><span id="show1_3" class="foldclosed" onClick="show_folder('1_3')" style="POSITION: absolute">+</span> <span id="hide1_3" class="foldopened" onClick="hide_folder('1_3')">-</span>
+<span style="color: #111111;">Design</span>
+<ul id="fold1_3" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">RCT</span>
+
+</li>
+<li><span style="color: #111111;">RDD</span>
+
+</li>
+<li><span style="color: #111111;">Propensity Score Matching</span>
+
+</li>
+<li><span style="color: #111111;">A/B Test</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_4" class="foldclosed" onClick="show_folder('1_4')" style="POSITION: absolute">+</span> <span id="hide1_4" class="foldopened" onClick="hide_folder('1_4')">-</span>
+<span style="color: #111111;">Measurement</span>
+<ul id="fold1_4" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">Causal Forest</span>
+
+</li>
+<li><span style="color: #111111;">Diff-in-Difffs</span>
+
+</li>
+<li><span style="color: #111111;">CUPED</span>
+
+</li>
+<li><span style="color: #111111;">DML</span>
+
+</li>
+<li><span style="color: #111111;">Meta-Learners</span>
+
+</li>
+<li><span style="color: #111111;">DRE</span>
+
+</li>
+<li><span style="color: #111111;">IV</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #00b439;">Cognitivo</span>
+<ul><li><span style="color: #990000;">RAG</span>
+
+</li>
+<li><span style="color: #990000;">MCP</span>
+
+</li>
+<li><span style="color: #990000;">A2A</span>
+
+</li>
+<li><span style="color: #990000;">LLM</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #00b439;">Preditivo</span>
+<ul><li><span style="color: #990000;">Classifica&#231;&#227;o</span>
+<ul><li><span style="color: #111111;">CART</span>
+
+</li>
+<li><span id="show1_5" class="foldclosed" onClick="show_folder('1_5')" style="POSITION: absolute">+</span> <span id="hide1_5" class="foldopened" onClick="hide_folder('1_5')">-</span>
+<span style="color: #111111;">Ensamble</span>
+<ul id="fold1_5" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">AdaBoost</span>
+
+</li>
+<li><span style="color: #111111;">CatBoost</span>
+
+</li>
+<li><span style="color: #111111;">Gradiend Boost</span>
+
+</li>
+<li><span style="color: #111111;">Light GBM</span>
+
+</li>
+<li><span style="color: #111111;">Random Forest</span>
+
+</li>
+<li><span style="color: #111111;">XGBoost</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">KNN</span>
+
+</li>
+<li><span style="color: #111111;">Naive-Bayes</span>
+
+</li>
+<li><span id="show1_6" class="foldclosed" onClick="show_folder('1_6')" style="POSITION: absolute">+</span> <span id="hide1_6" class="foldopened" onClick="hide_folder('1_6')">-</span>
+<span style="color: #111111;">Regress&#227;o Log&#237;stica</span>
+<ul id="fold1_6" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">Bin&#225;ria</span>
+
+</li>
+<li><span style="color: #111111;">Multinomial</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">SVM</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #990000;">Regress&#227;o</span>
+<ul><li><span id="show1_7" class="foldclosed" onClick="show_folder('1_7')" style="POSITION: absolute">+</span> <span id="hide1_7" class="foldopened" onClick="hide_folder('1_7')">-</span>
+<span style="color: #111111;">Regress&#227;o Linear</span>
+<ul id="fold1_7" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_7_1" class="foldclosed" onClick="show_folder('1_7_1')" style="POSITION: absolute">+</span> <span id="hide1_7_1" class="foldopened" onClick="hide_folder('1_7_1')">-</span>
+Suposi&#231;&#245;es
+<ul id="fold1_7_1" style="POSITION: relative; VISIBILITY: visible;"><li>Vari&#225;vel dependente deve ser Normal
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7_2" class="foldclosed" onClick="show_folder('1_7_2')" style="POSITION: absolute">+</span> <span id="hide1_7_2" class="foldopened" onClick="hide_folder('1_7_2')">-</span>
+Avalia&#231;&#227;o
+<ul id="fold1_7_2" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_7_2_1" class="foldclosed" onClick="show_folder('1_7_2_1')" style="POSITION: absolute">+</span> <span id="hide1_7_2_1" class="foldopened" onClick="hide_folder('1_7_2_1')">-</span>
+<span style="color: #0033ff;">F-Teste</span>
+<ul id="fold1_7_2_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #0033ff;">Signific&#226;ncia global do modelo</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7_2_2" class="foldclosed" onClick="show_folder('1_7_2_2')" style="POSITION: absolute">+</span> <span id="hide1_7_2_2" class="foldopened" onClick="hide_folder('1_7_2_2')">-</span>
+<span style="color: #0033ff;">t - Teste</span>
+<ul id="fold1_7_2_2" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #0033ff;">Signific&#226;ncia individual dos estimadores</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7_2_3" class="foldclosed" onClick="show_folder('1_7_2_3')" style="POSITION: absolute">+</span> <span id="hide1_7_2_3" class="foldopened" onClick="hide_folder('1_7_2_3')">-</span>
+<span style="color: #0033ff;">R&#178;</span>
+<ul id="fold1_7_2_3" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #0033ff;">Vari&#226;ncia explicada pelo modelo</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7_2_4" class="foldclosed" onClick="show_folder('1_7_2_4')" style="POSITION: absolute">+</span> <span id="hide1_7_2_4" class="foldopened" onClick="hide_folder('1_7_2_4')">-</span>
+<span style="color: #0033ff;">MSE</span>
+<ul id="fold1_7_2_4" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #0033ff;">Res&#237;duos</span>
+
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7_2_5" class="foldclosed" onClick="show_folder('1_7_2_5')" style="POSITION: absolute">+</span> <span id="hide1_7_2_5" class="foldopened" onClick="hide_folder('1_7_2_5')">-</span>
+<span style="color: #0033ff;">Res&#237;duos</span>
+<ul id="fold1_7_2_5" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #0033ff;">qq Plot</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span id="show1_7_3" class="foldclosed" onClick="show_folder('1_7_3')" style="POSITION: absolute">+</span> <span id="hide1_7_3" class="foldopened" onClick="hide_folder('1_7_3')">-</span>
+Testes
+<ul id="fold1_7_3" style="POSITION: relative; VISIBILITY: visible;"><li><span id="show1_7_3_1" class="foldclosed" onClick="show_folder('1_7_3_1')" style="POSITION: absolute">+</span> <span id="hide1_7_3_1" class="foldopened" onClick="hide_folder('1_7_3_1')">-</span>
+<span style="color: #0033ff;">Normalidade</span>
+<ul id="fold1_7_3_1" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #0033ff;">Shapiro-Wilker</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #0033ff;">Multicolinearidade</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Box-Cox</span>
+
+</li>
+<li><span style="color: #111111;">CART</span>
+
+</li>
+<li><span style="color: #111111;">Deep Learning</span>
+
+</li>
+<li><span style="color: #111111;">Modelo de Contagem</span>
+
+</li>
+<li><span id="show1_8" class="foldclosed" onClick="show_folder('1_8')" style="POSITION: absolute">+</span> <span id="hide1_8" class="foldopened" onClick="hide_folder('1_8')">-</span>
+<span style="color: #111111;">Ensamble</span>
+<ul id="fold1_8" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">AdaBoost</span>
+
+</li>
+<li><span style="color: #111111;">CatBoost</span>
+
+</li>
+<li><span style="color: #111111;">Gradiend Boost</span>
+
+</li>
+<li><span style="color: #111111;">Light GBM</span>
+
+</li>
+<li><span style="color: #111111;">Random Forest</span>
+
+</li>
+<li><span style="color: #111111;">XGBoost</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">Naive-Bayes</span>
+
+</li>
+<li><span style="color: #111111;">PCR</span>
+
+</li>
+<li><span style="color: #111111;">PLS</span>
+
+</li>
+<li><span id="show1_9" class="foldclosed" onClick="show_folder('1_9')" style="POSITION: absolute">+</span> <span id="hide1_9" class="foldopened" onClick="hide_folder('1_9')">-</span>
+<span style="color: #111111;">Regulariza&#231;&#227;o</span>
+<ul id="fold1_9" style="POSITION: relative; VISIBILITY: visible;"><li><span style="color: #111111;">Elastic Net</span>
+
+</li>
+<li><span style="color: #111111;">LASSO</span>
+
+</li>
+<li><span style="color: #111111;">Ridge</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #111111;">SVM</span>
+
+</li>
+<li><span style="color: #111111;">Gamma</span>
+
+</li>
+<li><span style="color: #111111;">Stepwise</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="color: #990000;">S&#233;ries Temporais</span>
+<ul><li><span style="color: #111111;">ARIMA</span>
+
+</li>
+<li><span style="color: #111111;">SARIMA</span>
+
+</li>
+<li><span style="color: #111111;">Holt-Winters</span>
+
+</li>
+<li><span style="color: #111111;">Prophet</span>
+
+</li>
+<li><span style="color: #111111;">VAR</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="color: #00b439;">Prescritivo</span>
+<ul><li><span style="color: #990000;">Programa&#231;&#227;o Linear</span>
+
+</li>
+<li><span style="color: #990000;">Programa&#231;&#227;o Din&#226;mica</span>
+
+</li>
+<li><span style="color: #990000;">Programa&#231;&#227;o N&#227;o Linear</span>
+
+</li>
+<li><span style="color: #990000;">Programa&#231;&#227;o Quadr&#225;tica</span>
+
+</li>
+<li><span style="color: #990000;">Programa&#231;&#227;o Inteira</span>
+
+</li>
+<li><span style="color: #990000;">Heur&#237;sticas</span>
+
+</li>
+<li><span style="color: #990000;">Simula&#231;&#227;o</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul><SCRIPT type="text/javascript">
+fold_document();
+</SCRIPT>
+</body>
+</html>

@@ -47,6 +47,11 @@ website:
     contents:
       - text: Bem Vindo(a)
         href: index.qmd
+      
+      - section: "Fundamentos"
+        contents:
+        - section: "1_Fundamentos/Mapa"
+
       - section: 2_Descritivo/descritivo.qmd
         contents:
         - section: "Gráficos"
@@ -61,24 +66,24 @@ website:
             contents:
             - section: "Regressão Logística"
               contents:
-              - 3_Preditivo/Classificação/Regressão Logística/cancer.ipynb
+              - 3_Preditivo/Classificaçao/Regressao_Logistica/cancer.ipynb
             - section: Random Forest
               contents:
-              - 3_Preditivo/Classificação/Random_Forest/titanic.ipynb
+              - 3_Preditivo/Classificaçao/Random_Forest/titanic.ipynb
             - section: "KNN"
               contents:
-              - 3_Preditivo/Classificação/KNN/iris.ipynb
+              - 3_Preditivo/Classificaçao/KNN/iris.ipynb
             - section: "SVM"
               contents:
-              - 3_Preditivo/Classificação/SVM/pinguins.ipynb
-          - section: "Regressão"
+              - 3_Preditivo/Classificaçao/SVM/pinguins.ipynb
+          - section: "3_Preditivo/Regressao/regressao.ipynb"
             contents:
-            - section: "Regressão Linear"
+            - section: "3_Preditivo/Regressao/Regressao_Linear/regressao_linear.ipynb"
               contents:
-              - 3_Preditivo/Regressão/Regressão Linear/housing.ipynb
+              - 3_Preditivo/Regressao/Regressao_Linear/housing.ipynb
             - section: "PLS"
               contents:
-              - 3_Preditivo/Regressão/PLS/gasoline.qmd
+              - 3_Preditivo/Regressao/PLS/gasoline.qmd
           - section: "Série Temporal"
             contents:
             - section: "ARIMA"

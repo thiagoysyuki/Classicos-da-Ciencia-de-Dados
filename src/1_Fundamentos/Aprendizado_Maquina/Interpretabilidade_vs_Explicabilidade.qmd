@@ -1,0 +1,10 @@
+# interpretabilidade vs explicabilidade
+
+A interpretabilidade e a explicabilidade são conceitos relacionados, mas distintos, no contexto da ciência de dados e do aprendizado de máquina.
+
+A **interpretabilidade** refere-se à capacidade de um modelo ou algoritmo ser compreendido e interpretado por humanos. Um modelo interpretável é aquele cujas decisões e previsões podem ser facilmente explicadas e compreendidas por pessoas, mesmo aquelas sem conhecimento técnico profundo. Modelos interpretáveis geralmente têm uma estrutura simples e transparente, como árvores de decisão ou regressão linear, onde é possível entender como as variáveis de entrada influenciam as saídas.
+
+A **explicabilidade**, por outro lado, refere-se à capacidade de um modelo ou algoritmo fornecer explicações claras e compreensíveis para suas decisões e previsões. Um modelo explicável é aquele que pode fornecer justificativas ou razões para suas decisões, mesmo que sua estrutura seja complexa. Modelos explicáveis podem incluir técnicas como LIME (Local Interpretable Model-agnostic Explanations) ou SHAP (SHapley Additive exPlanations), que ajudam a explicar as previsões de modelos complexos, como redes neurais ou máquinas de vetor de suporte.
+
+Em resumo, a interpretabilidade está relacionada à simplicidade e transparência do modelo, enquanto a explicabilidade está relacionada à capacidade de fornecer explicações compreensíveis para as decisões do modelo, independentemente de sua complexidade. Ambos os conceitos são importantes para garantir a confiança e a compreensão dos modelos de aprendizado de máquina, especialmente em contextos críticos, como saúde, finanças e justiça.
+
